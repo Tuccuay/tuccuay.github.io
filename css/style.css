@@ -125,7 +125,7 @@ body,
 }
 body {
   background: #eee;
-  font: 14px/1.6em "Source Han Sans Simplified Chinese", "Noto Sans CJK SC", "PingFang SC", "微软雅黑", "Microsoft Yahei", "Droid Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font: 14px/1.6em "PingFang SC - Thin", "Source Han Sans Simplified Chinese", "Noto Sans CJK SC", "PingFang SC", "微软雅黑", "Microsoft Yahei", "Droid Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
   -webkit-text-size-adjust: 100%;
 }
 .outer {
@@ -226,7 +226,7 @@ body {
 .widget h6 {
   font-weight: bold;
   color: #000;
-  font-family: "Source Han Sans Simplified Chinese", "Noto Sans CJK SC", "PingFang SC", "微软雅黑", "Microsoft Yahei", "Droid Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "PingFang SC - Thin", "Source Han Sans Simplified Chinese", "Noto Sans CJK SC", "PingFang SC", "微软雅黑", "Microsoft Yahei", "Droid Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 .article-entry h1 a,
 .widget h1 a,
@@ -561,7 +561,7 @@ body {
   background: none;
   color: #000;
   width: 100%;
-  font: 13px "Source Han Sans Simplified Chinese", "Noto Sans CJK SC", "PingFang SC", "微软雅黑", "Microsoft Yahei", "Droid Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font: 13px "PingFang SC - Thin", "Source Han Sans Simplified Chinese", "Noto Sans CJK SC", "PingFang SC", "微软雅黑", "Microsoft Yahei", "Droid Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
   outline: none;
 }
 .search-form-input::-webkit-search-results-decoration,
@@ -707,7 +707,7 @@ a.article-title:hover {
   padding: 10px 0;
 }
 .article-entry blockquote {
-  font-family: "Source Han Sans Simplified Chinese", "Noto Sans CJK SC", "PingFang SC", "微软雅黑", "Microsoft Yahei", "Droid Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "PingFang SC - Thin", "Source Han Sans Simplified Chinese", "Noto Sans CJK SC", "PingFang SC", "微软雅黑", "Microsoft Yahei", "Droid Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
   margin: 1.6em 0;
   padding: 0 0.8em;
   border-left: 4px solid #ddd;
@@ -716,7 +716,7 @@ a.article-title:hover {
 .article-entry blockquote footer {
   font-size: 14px;
   margin: 1.6em 0;
-  font-family: "Source Han Sans Simplified Chinese", "Noto Sans CJK SC", "PingFang SC", "微软雅黑", "Microsoft Yahei", "Droid Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "PingFang SC - Thin", "Source Han Sans Simplified Chinese", "Noto Sans CJK SC", "PingFang SC", "微软雅黑", "Microsoft Yahei", "Droid Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 .article-entry blockquote footer cite:before {
   content: "—";
@@ -926,7 +926,7 @@ a.article-title:hover {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font: 14px "Source Han Sans Simplified Chinese", "Noto Sans CJK SC", "PingFang SC", "微软雅黑", "Microsoft Yahei", "Droid Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font: 14px "PingFang SC - Thin", "Source Han Sans Simplified Chinese", "Noto Sans CJK SC", "PingFang SC", "微软雅黑", "Microsoft Yahei", "Droid Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
   padding: 0 15px;
   color: #000;
   outline: none;
@@ -1349,7 +1349,7 @@ a.article-title:hover {
 .article-entry .gist .gist-file .gist-meta {
   background: #272822;
   color: #75715e;
-  font: 0.85em "Source Han Sans Simplified Chinese", "Noto Sans CJK SC", "PingFang SC", "微软雅黑", "Microsoft Yahei", "Droid Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font: 0.85em "PingFang SC - Thin", "Source Han Sans Simplified Chinese", "Noto Sans CJK SC", "PingFang SC", "微软雅黑", "Microsoft Yahei", "Droid Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
   text-shadow: 0 0;
   padding: 0;
   margin-top: 1em;
