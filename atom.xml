@@ -4,7 +4,7 @@
   <subtitle><![CDATA[懂的越多，会的越少 / A life soloplayer.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.tuccuay.com/"/>
-  <updated>2015-11-30T05:55:00.000Z</updated>
+  <updated>2015-12-18T11:44:02.000Z</updated>
   <id>http://www.tuccuay.com/</id>
   
   <author>
@@ -13,6 +13,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Launch a iOS app / 应用启动原理]]></title>
+    <link href="http://www.tuccuay.com/2015/12/Launch-a-iOS-app/"/>
+    <id>http://www.tuccuay.com/2015/12/Launch-a-iOS-app/</id>
+    <published>2015-12-18T11:30:31.000Z</published>
+    <updated>2015-12-18T11:44:02.000Z</updated>
+    <content type="html"><![CDATA[<ol>
+<li>首先将会启动 <code>main.m</code>；</li>
+<li>在其中创建 <code>UIApplication</code> 对象；</li>
+<li><p>并为其设置代理。</p>
+ <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import &lt;UIKit/UIKit.h&gt;</span></span><br><span class="line"><span class="preprocessor">#import <span class="string">"AppDelegate.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">	@autoreleasepool &#123;</span><br><span class="line">		<span class="keyword">return</span> UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate <span class="keyword">class</span>]));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 在 <code>argc, argv, nil, NSStringFromClass([AppDelegate class])</code> 中：</p>
+<ul>
+<li><code>nil</code> 为 <code>UIApplication</code> 类或其子类的名称，当传入 <code>nil</code> 时视为传入 <code>@&quot;UIApplication&quot;</code>；</li>
+<li><code>NSStringFormClass([AppDelegate class])</code> 为获取 <code>AppDelegate</code> 的类名；</li>
+</ul>
+</li>
+<li></li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[<ol>
+<li>首先将会启动 <code>main.m</code>；</li>
+<li>在其中创建 <code>UIApplication</code> 对象；</li>
+<li><p>并为其设置代理。</p>
+ <figure class="highlight c"><ta]]>
+    </summary>
+    
+      <category term="iOS" scheme="http://www.tuccuay.com/tags/iOS/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Objective-C/OC Syntactic sugar/语法糖]]></title>
