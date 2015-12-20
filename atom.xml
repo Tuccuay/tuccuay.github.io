@@ -4,7 +4,7 @@
   <subtitle><![CDATA[懂的越多，会的越少 / A life soloplayer.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.tuccuay.com/"/>
-  <updated>2015-12-18T11:44:02.000Z</updated>
+  <updated>2015-12-19T01:56:01.000Z</updated>
   <id>http://www.tuccuay.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://www.tuccuay.com/2015/12/Launch-a-iOS-app/"/>
     <id>http://www.tuccuay.com/2015/12/Launch-a-iOS-app/</id>
     <published>2015-12-18T11:30:31.000Z</published>
-    <updated>2015-12-18T11:44:02.000Z</updated>
+    <updated>2015-12-19T01:56:01.000Z</updated>
     <content type="html"><![CDATA[<ol>
 <li>首先将会启动 <code>main.m</code>；</li>
 <li>在其中创建 <code>UIApplication</code> 对象；</li>
@@ -31,18 +31,81 @@
 <li><code>NSStringFormClass([AppDelegate class])</code> 为获取 <code>AppDelegate</code> 的类名；</li>
 </ul>
 </li>
-<li></li>
+<li>开始一个主运行循环 (RunLoop)，保证 app 运行期间不会退出</li>
+<li>加载 <code>info.plist</code>，如果其中指定有 <code>Main storyboard file base name</code> 则加载对应的 StoryBoard：<br> 创建⼀一个窗⼝，加载 MainStoryBoard,初始化⼀个控制器，把初始化出来的控制器设置为窗⼝的根控制器.让窗口显示到屏幕上</li>
+<li>如果其中没有指定 <code>Main storyboard file base name</code> (recommened):<a id="more"></a>
+<ul>
+<li>窗口必须强引用 <code>@property (strong, nonatomic) UIWindow *window</code></li>
+<li>创建窗口 <code>self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];</code><h4 id="Plan_A_-_手动创建">Plan A - 手动创建</h4></li>
+<li>创建一个控制器 <code>UIViewController *mainViewController = [[UIViewController alloc] init];</code></li>
+<li>将 <code>UIWindow</code> 的根控制器设置为<strong>上面</strong>创建的控制器 <code>self.window.rootViewController = mainViewController;</code><ul>
+<li>为了能看见效果，创建一个带颜色的 <code>UIView</code> 在上面</li>
+<li><code>UIView *testView = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];</code></li>
+<li><code>testView.backgroundColor = [UIColor redColor];</code></li>
+<li><code>[self.window addSubview:testView];</code></li>
+</ul>
+</li>
+<li>显示出这个 UIWindow <code>[self.window makeKeyAndVisible];</code><h4 id="Plan_B_-_从_StoryBoard_加载">Plan B - 从 StoryBoard 加载</h4><ul>
+<li>加载 <code>Main.Storyboard</code> <code>UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@&quot;Main&quot; bundle:nil];</code></li>
+<li>从中加载箭头指向的控制器 <code>self.window.rootViewController = [mainStoryBoard instantiateInitialViewController];</code></li>
+<li>或者根据 <code>标识</code> 加载指定的控制器 <code>UIViewController *aViewController =  [storyBoard instantiateViewControllerWithIdentifier:@&quot;aViewController&quot;];</code></li>
+<li>将其显示出来 <code>[self.window makeKeyAndVisible];</code><h5 id="makeKeyAndVisible_可能的底层实现："><code>makeKeyAndVisible</code> 可能的底层实现：</h5></li>
+<li><code>self.window.hidden = NO</code> 因为创建出来的 UIWindow 是隐藏的</li>
+<li><code>[self.window addSubview:mainViewController.view]</code> 将控制器的 <code>view</code> 添加到 <code>window</code> 中</li>
+<li><code>[UIApplication sharedApplication].keyWindow</code> 将当前窗口设置为应用的主窗口</li>
+</ul>
+</li>
+</ul>
+</li>
 </ol>
+<p>在自动创建的 AppDelegate.m 中默认实现了以下方法：</p>
+<ul>
+<li><p>当 App 启动完成 / didFinishLaunching 时调用：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:(<span class="built_in">NSDictionary</span> *)launchOptions</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当应用程序将要失去焦点（即不能与用户进行交互时）/ Will Resign Active 时调用</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)applicationWillResignActive:(<span class="built_in">UIApplication</span> *)application;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当应用程序进入后台 / Did Enter Background 时调用</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)applicationDidEnterBackground:(<span class="built_in">UIApplication</span> *)application;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当应用程序即将进入前台 / Will Enter Foreground 时调用</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)applicationWillEnterForeground:(<span class="built_in">UIApplication</span> *)application;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当应用程序获取焦点（即能够与用户进行交互）/ Did Become Active 时调用</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)applicationDidBecomeActive:(<span class="built_in">UIApplication</span> *)application;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当应用程序被退出 / Will Terminate 时调用</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)applicationWillTerminate:(<span class="built_in">UIApplication</span> *)application;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>另外，当接收到内存警告 /Did Receive Memory Warning 时，会调用<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)applicationDidReceiveMemoryWarning:(<span class="built_in">UIApplication</span> *)application;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
     <summary type="html">
     <![CDATA[<ol>
 <li>首先将会启动 <code>main.m</code>；</li>
 <li>在其中创建 <code>UIApplication</code> 对象；</li>
 <li><p>并为其设置代理。</p>
- <figure class="highlight c"><ta]]>
+ <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import &lt;UIKit/UIKit.h&gt;</span></span><br><span class="line"><span class="preprocessor">#import <span class="string">"AppDelegate.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">	@autoreleasepool &#123;</span><br><span class="line">		<span class="keyword">return</span> UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate <span class="keyword">class</span>]));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 在 <code>argc, argv, nil, NSStringFromClass([AppDelegate class])</code> 中：</p>
+<ul>
+<li><code>nil</code> 为 <code>UIApplication</code> 类或其子类的名称，当传入 <code>nil</code> 时视为传入 <code>@&quot;UIApplication&quot;</code>；</li>
+<li><code>NSStringFormClass([AppDelegate class])</code> 为获取 <code>AppDelegate</code> 的类名；</li>
+</ul>
+</li>
+<li>开始一个主运行循环 (RunLoop)，保证 app 运行期间不会退出</li>
+<li>加载 <code>info.plist</code>，如果其中指定有 <code>Main storyboard file base name</code> 则加载对应的 StoryBoard：<br> 创建⼀一个窗⼝，加载 MainStoryBoard,初始化⼀个控制器，把初始化出来的控制器设置为窗⼝的根控制器.让窗口显示到屏幕上</li>
+<li>如果其中没有指定 <code>Main storyboard file base name</code> (recommened):]]>
+    
     </summary>
     
+      <category term="Objective-C" scheme="http://www.tuccuay.com/tags/objective-c/"/>
+    
       <category term="iOS" scheme="http://www.tuccuay.com/tags/iOS/"/>
+    
+      <category term="iOS-Development" scheme="http://www.tuccuay.com/tags/ios-development/"/>
+    
+      <category term="AppDevelopment(应用开发)" scheme="http://www.tuccuay.com/categories/mobile-application-development/"/>
     
   </entry>
   

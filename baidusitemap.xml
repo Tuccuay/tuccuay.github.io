@@ -5,16 +5,23 @@
     
   <url>
     <loc>http://www.tuccuay.com/2015/12/Launch-a-iOS-app/</loc>
-    <lastmod>2015-12-18T11:44:02.000Z</lastmod>
+    <lastmod>2015-12-19T01:56:01.000Z</lastmod>
     <data>
         <display>
         <title>Launch a iOS app / 应用启动原理</title>
         <pubTime>2015-12-18T11:30:31.000Z</pubTime>
         
+        <tag>Objective-C</tag>
+         
         <tag>iOS</tag>
+         
+        <tag>iOS-Development</tag>
          
          
            
+             
+              <breadCrumb title="AppDevelopment(应用开发)" url="http://www.tuccuay.com/categories/mobile-application-development/"/>
+          
         </display>
     </data>
     </url>
