@@ -4,6 +4,37 @@
 
     
   <url>
+    <loc>http://www.tuccuay.com/2016/01/multiphreading-pthread-nsthread-gcd-nsoperation/</loc>
+    <lastmod>2016-01-17T11:50:53.000Z</lastmod>
+    <data>
+        <display>
+        <title>多线程：pthread、NSThread、GCD 和 NSOperation</title>
+        <pubTime>2016-01-15T03:46:10.000Z</pubTime>
+        
+        <tag>OS_X-Development</tag>
+         
+        <tag>Objective-C</tag>
+         
+        <tag>iOS-Development</tag>
+         
+        <tag>tvOS-Development</tag>
+         
+        <tag>watchOS-Development</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming-Language(编程语言)" url="http://www.tuccuay.com/categories/programming-language/"/>
+          
+             
+              <breadCrumb title="AppDevelopment(应用开发)" url="http://www.tuccuay.com/categories/programming-language/mobile-application-development/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.tuccuay.com/2015/12/Launch-a-iOS-app/</loc>
     <lastmod>2015-12-19T01:56:01.000Z</lastmod>
     <data>
