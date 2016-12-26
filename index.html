@@ -4,26 +4,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>洪朔 → Tuccuay&#39;s Blog</title>
+  <title>洪朔 → Tuccuay</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Tuccuay's Blog">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Tuccuay">
 <meta property="og:url" content="http://www.tuccuay.com/index.html">
-<meta property="og:site_name" content="Tuccuay's Blog">
-<meta property="og:description">
+<meta property="og:site_name" content="Tuccuay">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tuccuay's Blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Tuccuay">
 <meta name="twitter:creator" content="@tuccuay">
 <link rel="publisher" href="116552355715323630000">
   
-    <link rel="alternative" href="/atom.xml" title="Tuccuay&#39;s Blog" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Tuccuay" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
   <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
   
 <!-- Google Analytics -->
@@ -57,11 +54,11 @@ ga('send', 'pageview');
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Tuccuay&#39;s Blog</a>
+        <a href="/" id="logo">Tuccuay</a>
       </h1>
       
         <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">懂的越多，会的越少 / A life soloplayer.</a>
+          <a href="/" id="subtitle">Swift / Python / ♂</a>
         </h2>
       
     </div>
@@ -111,6 +108,339 @@ ga('send', 'pageview');
     <div class="outer">
       <section id="main">
   
+    <article id="post-runtime-summary-publish" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/runtime-summary-publish/" class="article-date">
+  <time datetime="2016-04-24T08:59:36.000Z" itemprop="datePublished">2016-04-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/black-magic/">BlackMagic(黑魔法)</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/runtime-summary-publish/">RuntimeSummary - 一个集合了常用 Runtime 使用方法的 Playground</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://github.com/Tuccuay/RuntimeSummary/raw/master/Assets/RuntimeSummary.png" alt="RuntimeSummary"></p>
+<p><a href="https://github.com/Tuccuay/RuntimeSummary">https://github.com/Tuccuay/RuntimeSummary</a></p>
+<h1 id="RuntimeSummary"><a href="#RuntimeSummary" class="headerlink" title="RuntimeSummary"></a>RuntimeSummary</h1><p>一个集合了常用 Objective-C Runtime 使用方法的 Playground</p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><a href="#Playground">如何使用这个 Playground</a></li>
+<li><a href="#Messaging">消息机制介绍 / Messaging</a></li>
+<li><a href="#MethodSwizzling">方法交换 / MethodSwizzling</a></li>
+<li><a href="#ResolveInstanceMethod">动态加载方法 / ResolveInstanceMethod</a></li>
+<li><a href="#ForwardMessage">消息转发 / ForwardMessage</a></li>
+<li><a href="#AssociatedObject">动态关联属性 / AssociatedObject</a></li>
+<li><a href="#MakeModel">字典转模型 / MakeModel</a></li>
+<li><a href="#ObjectArchive">对象归档、解档 / ObjectArchive</a></li>
+<li><a href="#More">更多</a></li>
+</ul>
+<h2 id="Playground">如何使用这个 Playground </h2>
+
+<p><img src="https://github.com/Tuccuay/RuntimeSummary/raw/master/Assets/Screenshot.png" alt="Screenshot"></p>
+<p>先选择 Scheme，然后 Run！</p>
+<h2 id="Messaging">消息机制介绍 / Messaging</h2>
+
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 创建一个对象</span></div><div class="line"><span class="comment">// Cat *harlan = [[Cat alloc] init];</span></div><div class="line"></div><div class="line"><span class="comment">// 使用 Runtime 创建一个对象</span></div><div class="line"><span class="comment">// 根据类名获取到类</span></div><div class="line">Class catClass = objc_getClass(<span class="string">"Cat"</span>);</div><div class="line"></div><div class="line"><span class="comment">// 同过类创建实例对象</span></div><div class="line"><span class="comment">// 如果这里报错，请将 Build Setting -&gt; Enable Strict Checking of objc_msgSend Calls 改为 NO</span></div><div class="line">Cat *harlan = objc_msgSend(catClass, <span class="keyword">@selector</span>(alloc));</div><div class="line"></div><div class="line"><span class="comment">// 初始化对象</span></div><div class="line"><span class="comment">// harlan = [harlan init];</span></div><div class="line"></div><div class="line"><span class="comment">// 通过 Runtime 初始化对象</span></div><div class="line">harlan = objc_msgSend(harlan, <span class="keyword">@selector</span>(init));</div><div class="line"></div><div class="line"><span class="comment">// 调用对象方法</span></div><div class="line"><span class="comment">// [harlan eat];</span></div><div class="line"></div><div class="line"><span class="comment">// 通过 Runtime 调用对象方法</span></div><div class="line"><span class="comment">// 调用的这个方法没有声明只有实现所以这里会有警告</span></div><div class="line"><span class="comment">// 但是发送消息的时候会从方法列表里寻找方法</span></div><div class="line"><span class="comment">// 所以这个能够成功执行</span></div><div class="line">objc_msgSend(harlan, <span class="keyword">@selector</span>(eat));</div><div class="line"></div><div class="line"><span class="comment">// 输出： 2016-04-21 21:10:20.733 Messaging[20696:1825249] burbur~</span></div><div class="line"></div><div class="line"><span class="comment">// 当然，objc_msgSend 可以传递参数</span></div><div class="line">Cat *alex = objc_msgSend(objc_msgSend(objc_getClass(<span class="string">"Cat"</span>), sel_registerName(<span class="string">"alloc"</span>)), sel_registerName(<span class="string">"init"</span>));</div><div class="line">objc_msgSend(alex, <span class="keyword">@selector</span>(run:), <span class="number">10</span>);</div></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2016/04/runtime-summary-publish/#more">阅读全文</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://www.tuccuay.com/2016/04/runtime-summary-publish/" data-id="cix5idgkw000rgkbe76l3l92w" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://www.tuccuay.com/2016/04/runtime-summary-publish/#disqus_thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/os-x-development/">OS_X-Development</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/objective-c/">Objective-C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios-development/">iOS-Development</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tvos-development/">tvOS-Development</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/watchos-development/">watchOS-Development</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cardboard-ios-sdk-getting-started" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/cardboard-ios-sdk-getting-started/" class="article-date">
+  <time datetime="2016-03-31T07:09:19.000Z" itemprop="datePublished">2016-03-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/mobile-application-development/">AppDevelopment(应用开发)</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/cardboard-ios-sdk-getting-started/">在 iOS 上开始创建你的虚拟现实应用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在 iOS 上开始创建你的虚拟现实应用<br>原文链接 : <a href="https://developers.google.com/cardboard/ios/get-started">Getting Started | Cardboard | Google Developers</a><br>译文链接 : <a href="https://www.tuccuay.com/2016/03/cardboard-ios-sdk-getting-started/">在 iOS 上开始创建你的虚拟现实应用</a></p>
+<p>以前 Cardboard 也是支持在 iOS 上使用的，依靠 Unity 来实现，所以你需要用 C# 来编写 iOS app（听起来很奇怪对不对？） 而今天在 GDG China 看见 <a href="http://chinagdg.org/2016/03/google-vr-view/">全新 VR 视图：让你的应用和网站嵌入沉浸式内容</a> 当然迫不及待的想尝试一下，于是翻译了最新的文档，大家一起来体验一下在 iOS 上实现虚拟现实的新方式吧。</p>
+<p>Cardboard 是 Google 一款能够很方便让你的手机变身 VR 设备的产品，如果你还没有拥有它，可以去某宝买一个 ;)</p>
+<p>这个 Cardboard SDK 可以让你很方便的控制音频的空间感（例如左右声道），也可以控制响度，所以你可以让一段对话在一个小飞船中或者一个很大的地下洞穴中表现得很不一样。</p>
+<p>在这个示例程序中我们完成了一个寻宝游戏，他演示了 Cardboard 的核心功能。玩家将会在一个虚拟的世界中寻找宝物。你将会学习如何使用光照、空间运动和着色等基本功能如果玩家看见了他要找的东西，将会触发空间音效和视差效果。</p>
+<h2 id="基本要求"><a href="#基本要求" class="headerlink" title="基本要求"></a>基本要求</h2><p>为了能够运行这个示例程序，你至少需要满足以下条件：</p>
+<ul>
+<li>Xcode 7.1 或更高版本</li>
+<li>CocoaPods， 访问 CocoaPods 来安装。</li>
+<li>一部运行 iOS 7.0 或更高版本的 iPhone。</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2016/03/cardboard-ios-sdk-getting-started/#more">阅读全文</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://www.tuccuay.com/2016/03/cardboard-ios-sdk-getting-started/" data-id="cix5idgk8000dgkbexwbg2vsc" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://www.tuccuay.com/2016/03/cardboard-ios-sdk-getting-started/#disqus_thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/objective-c/">Objective-C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/virtual-reality/">Virtual-Reality(虚拟现实)</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios-development/">iOS-Development</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-yyets-icon-material-design" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/yyets-icon-material-design/" class="article-date">
+  <time datetime="2016-03-04T08:17:13.000Z" itemprop="datePublished">2016-03-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ui-ux/">UI/UX</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/yyets-icon-material-design/">人人影视 Icon 的 Material Design - 「圣光会制裁你」</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先我们来看看 @d5cc 的设计稿：</p>
+<p><img src="https://www.tuccuay.com/post-pic/2016/03/yyets-icon-material-design/d5cc-material-design-yyets-android-app.png" alt="@D5CC 设计的 Material Design 风格 人人美剧 Android App"></p>
+<p>这个 icon 看起来太奇怪了，一点都不 flat 嘛，于是我花十分钟做了这个：</p>
+<p><img src="https://www.tuccuay.com/post-pic/2016/03/yyets-icon-material-design/tuccuay-yyets-material-design-icon-01.jpg" alt=""></p>
+<blockquote>
+<p>[In reply to Tuccuay | B1AF AFC5]</p>
+<p>😭我就是不想做成这样</p>
+<p>md没有这样的😂</p>
+<p>d5cc.tumblr.com, [04.03.16 11:30]</p>
+</blockquote>
+<p>@d5cc 祭出了 Google design guideline: <a href="https://www.google.com/design/spec/style/icons.html">https://www.google.com/design/spec/style/icons.html</a></p>
+        
+          <p class="article-more-link">
+            <a href="/2016/03/yyets-icon-material-design/#more">阅读全文</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://www.tuccuay.com/2016/03/yyets-icon-material-design/" data-id="cix5idgko000mgkbeltyop50z" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://www.tuccuay.com/2016/03/yyets-icon-material-design/#disqus_thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/icon/">Icon</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/material-design/">Material Design</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Pro-Git-2-阅读笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/Pro-Git-2-阅读笔记/" class="article-date">
+  <time datetime="2016-02-23T05:15:16.000Z" itemprop="datePublished">2016-02-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/project-manager/">Project-Manager(项目管理)</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/Pro-Git-2-阅读笔记/">Pro Git 2 阅读笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原书地址： <a href="http://git-scm.com/book/zh/v2">http://git-scm.com/book/zh/v2</a></p>
+<h2 id="初始化一个-repo"><a href="#初始化一个-repo" class="headerlink" title="初始化一个 repo"></a>初始化一个 repo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git init // 将在目录下创建 .git</div><div class="line">git add . // 添加目录下所有文件到 git 暂存区(Staging Area)</div><div class="line">// 不要忘记 LICENSE 和 README.md</div><div class="line">git commit -m <span class="string">"init a project"</span> // 提交到本地 repo</div></pre></td></tr></table></figure>
+<h2 id="克隆一个仓库-git-clone"><a href="#克隆一个仓库-git-clone" class="headerlink" title="克隆一个仓库 git clone"></a>克隆一个仓库 <code>git clone</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> https://example.com/username/repo</div><div class="line">git <span class="built_in">clone</span> https://example.com/username/repo rename // 将以 <span class="string">"rename"</span> 存储</div></pre></td></tr></table></figure>
+<h2 id="查看当前状态-git-status"><a href="#查看当前状态-git-status" class="headerlink" title="查看当前状态 git status"></a>查看当前状态 <code>git status</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git status</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>Untracked</strong> 未跟踪的数据：文件在文件夹中，但不在仓库中<ul>
+<li>是新增文件，将显示 <code>new file: file.name</code> 使用 <code>git add</code> 来添加它</li>
+<li>已经从 repo 中 <code>git remove</code></li>
+</ul>
+</li>
+<li><strong>Unmodified</strong> 未更改：一起都和看上去的一样</li>
+<li><strong>Modified</strong> 已更改：文件发生了变化<ul>
+<li>将显示 <code>modified: file.name</code> 需要 <code>git add</code> 来暂存更改</li>
+</ul>
+</li>
+<li><strong>Staged</strong> 已暂存：改动已经存储到暂存区</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2016/02/Pro-Git-2-阅读笔记/#more">阅读全文</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://www.tuccuay.com/2016/02/Pro-Git-2-阅读笔记/" data-id="cix5idgkc000ggkbe957co8xv" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://www.tuccuay.com/2016/02/Pro-Git-2-阅读笔记/#disqus_thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/learning/">Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-jisuanke-cs113-python-programming" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/jisuanke-cs113-python-programming/" class="article-date">
+  <time datetime="2016-02-10T04:13:51.000Z" itemprop="datePublished">2016-02-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/jisuanke/">jisuanke(计蒜客)</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/jisuanke-cs113-python-programming/">计蒜客 CS113 Python 程序设计</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="A-B-C-问题"><a href="#A-B-C-问题" class="headerlink" title="A+B+C 问题"></a>A+B+C 问题</h2><blockquote>
+<p>这是一个非常简单的题目，意在考察你编程的基础能力。千万别想难了哦。输入为三行，每行一个整数，分别为 A、B、C（数据范围均在 -40 ~ 40 之间）。输出为一行，为“A+B+C”的计算结果。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">input_list = raw_input().split(<span class="string">' '</span>)</div><div class="line">sum = <span class="number">0</span></div><div class="line"><span class="keyword">for</span> input_number <span class="keyword">in</span> input_list:</div><div class="line">    sum = sum+int(i)</div><div class="line"><span class="keyword">print</span> sum</div></pre></td></tr></table></figure>
+<h2 id="批量替换字符串"><a href="#批量替换字符串" class="headerlink" title="批量替换字符串"></a>批量替换字符串</h2><blockquote>
+<p>在网络编程中，如果 URL 中含有特殊字符，如空格、<code>#</code> 等，服务器将无法识别导致无法获得正确的参数值，我们需要将这些特殊字符转换成服务器可以识别的字符，例如将空格转换成 <code>%20</code>。给定一个字符串，将其中的空格转换成 <code>%20</code>。<br>输入一个原始字符串，例如 <code>hello world</code>。<br>输出转换后的字符串，例如 <code>hello%20world</code> 。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">source_str = raw_input()</div><div class="line">source_str = source_str.replace(<span class="string">' '</span>, <span class="string">'%20'</span>)</div><div class="line"><span class="keyword">print</span> source_str</div></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2016/02/jisuanke-cs113-python-programming/#more">阅读全文</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://www.tuccuay.com/2016/02/jisuanke-cs113-python-programming/" data-id="cix5idgk6000cgkbe88pqr2dx" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://www.tuccuay.com/2016/02/jisuanke-cs113-python-programming/#disqus_thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/learning/">Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-multiphreading-pthread-nsthread-gcd-nsoperation" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/01/multiphreading-pthread-nsthread-gcd-nsoperation/" class="article-date">
@@ -138,12 +468,12 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <p>在 iOS 开发中，可以通过以下四种方法创建子线程：</p>
-<h1 id="pthread">pthread</h1><p><code>pthread</code> 是来自 Clang 中的方法，使用前需要手动 <code>#import &lt;pthread.h&gt;</code><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line"> * &lt;#pthread_t *restrict#&gt; : 要在哪一个线程对象中执行（Thread Object 的地址）</span><br><span class="line"> * &lt;#const pthread_attr_t *restrict#&gt; : 要给Thread Object  的属性</span><br><span class="line"> * &lt;#void *(*)(void *)#&gt; : 要执行的函数（指向函数的指针）</span><br><span class="line"> * &lt;#void *restrict#&gt; : 要传入的参数</span><br><span class="line"> */</span></span><br><span class="line">pthread_create(&lt;<span class="preprocessor">#pthread_t *restrict#&gt;, &lt;#const pthread_attr_t *restrict#&gt;, &lt;#void *(*)(void *)#&gt;, &lt;#void *restrict#&gt;)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">pthread_t</span> thread;  <span class="comment">// 声明一个线程对象（Thread Object）</span></span><br><span class="line"><span class="comment">// 在 "thread" 线程对象中执行名为 "runInChildThread" 的函数，线程名为 "anChildThread"</span></span><br><span class="line">pthread_create(&amp;thread, <span class="literal">NULL</span>, runInChildThread, (__bridge <span class="keyword">void</span> *)(@<span class="string">"anChildThread"</span>));</span><br></pre></td></tr></table></figure></p>
-<h1 id="NSThread">NSThread</h1><h5 id="直接创建一个子线程_（alloc_init）">直接创建一个子线程 （alloc init）</h5><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">convenience</span> <span class="keyword">init</span>(target target: <span class="type">AnyObject</span>, selector selector: <span class="type">Selector</span>, object argument: <span class="type">AnyObject</span>?)</span><br></pre></td></tr></table></figure>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">- (instancetype)initWithTarget:(<span class="keyword">id</span>)target selector:(SEL)selector object:(<span class="keyword">id</span>)argument</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span><br><span class="line"> &lt;#(nonnull id)#&gt; : 目标对象</span><br><span class="line"> &lt;#(nonnull SEL)#&gt; : @selector()，需要调用的方法</span><br><span class="line"> &lt;#(nullable id)#&gt; : 前面方法要接收的参数（对象）</span><br><span class="line"> */</span></span><br><span class="line"> - (instancetype)initWithTarget:(<span class="keyword">id</span>)target selector:(SEL)selector object:(<span class="keyword">id</span>)argument</span><br><span class="line"> <span class="built_in">NSThread</span> *thread = [[<span class="built_in">NSThread</span> alloc] initWithTarget:&lt;<span class="preprocessor">#(nonnull id)#&gt; selector:<span class="title">&lt;#(nonnull SEL)#&gt;</span> object:<span class="title">&lt;#(nullable id)#&gt;</span>];</span></span><br><span class="line"> thread<span class="variable">.name</span> = <span class="string">@"some name"</span>; <span class="comment">// operational</span></span><br><span class="line"> thread<span class="variable">.threadPriority</span> = <span class="number">1.0</span> <span class="comment">// operational 1.0 为最高优先级</span></span><br><span class="line"> <span class="comment">// #warning: thread 在执行完成后将会死亡</span></span><br><span class="line"> <span class="comment">// 即使有 strong 指向导致没有被释放，也不能再次 + (void)start;</span></span><br><span class="line"> <span class="comment">// 否则会 carsh</span></span><br><span class="line"> [thread start]; </span><br><span class="line"> <span class="comment">// 休眠（阻塞）线程，直到 aDate 再继续执行</span></span><br><span class="line"> + (<span class="keyword">void</span>)sleepUntilDate:(<span class="built_in">NSDate</span> *)aDate</span><br><span class="line"> <span class="comment">// 休眠（阻塞）线程，直到 ti 秒之后再继续执行</span></span><br><span class="line"> + (<span class="keyword">void</span>)sleepForTimeInterval:(<span class="built_in">NSTimeInterval</span>)ti</span><br><span class="line"> <span class="comment">// 退出线程</span></span><br><span class="line"> + (<span class="keyword">void</span>)exit</span><br></pre></td></tr></table></figure>
-<h5 id="分离出一条子线程">分离出一条子线程</h5> <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">func</span> <span class="title">detachNewThreadSelector</span>(<span class="title">_</span> <span class="title">selector</span>: <span class="title">Selector</span>, <span class="title">toTarget</span> <span class="title">target</span>: <span class="title">AnyObject</span>, <span class="title">withObject</span> <span class="title">argument</span>: <span class="title">AnyObject</span>?)</span></span><br></pre></td></tr></table></figure>
- <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="keyword">void</span>)detachNewThreadSelector:(SEL)aSelector toTarget:(<span class="keyword">id</span>)aTarget withObject:(<span class="keyword">id</span>)anArgument</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span><br><span class="line">* &lt;#(nonnull SEL)#&gt; : 要执行的方法</span><br><span class="line">* &lt;#(nonnull id)#&gt; : 执行方法目标对象</span><br><span class="line">* &lt;#(nullable id)#&gt; : 要传入的参数</span><br><span class="line">*/</span></span><br><span class="line">[<span class="built_in">NSThread</span> detachNewThreadSelector:&lt;<span class="preprocessor">#(nonnull SEL)#&gt; toTarget:<span class="title">&lt;#(nonnull id)#&gt;</span> withObject:<span class="title">&lt;#(nullable id)#&gt;</span>];</span></span><br></pre></td></tr></table></figure>
-<h5 id="创建一条后台线程">创建一条后台线程</h5> <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">performSelectorInBackground</span><span class="params">(<span class="number">_</span> aSelector: Selector, withObject arg: AnyObject?)</span></span></span><br></pre></td></tr></table></figure>
+<h1 id="pthread"><a href="#pthread" class="headerlink" title="pthread"></a>pthread</h1><p><code>pthread</code> 是来自 Clang 中的方法，使用前需要手动 <code>#import &lt;pthread.h&gt;</code><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</div><div class="line"> * &lt;#pthread_t *restrict#&gt; : 要在哪一个线程对象中执行（Thread Object 的地址）</div><div class="line"> * &lt;#const pthread_attr_t *restrict#&gt; : 要给Thread Object  的属性</div><div class="line"> * &lt;#void *(*)(void *)#&gt; : 要执行的函数（指向函数的指针）</div><div class="line"> * &lt;#void *restrict#&gt; : 要传入的参数</div><div class="line"> */</span></div><div class="line">pthread_create(&lt;#<span class="keyword">pthread_t</span> *<span class="keyword">restrict</span>#&gt;, &lt;#<span class="keyword">const</span> <span class="keyword">pthread_attr_t</span> *<span class="keyword">restrict</span>#&gt;, &lt;#<span class="keyword">void</span> *(*)(<span class="keyword">void</span> *)#&gt;, &lt;#<span class="keyword">void</span> *<span class="keyword">restrict</span>#&gt;)</div><div class="line"></div><div class="line"><span class="keyword">pthread_t</span> thread;  <span class="comment">// 声明一个线程对象（Thread Object）</span></div><div class="line"><span class="comment">// 在 "thread" 线程对象中执行名为 "runInChildThread" 的函数，线程名为 "anChildThread"</span></div><div class="line">pthread_create(&amp;thread, <span class="literal">NULL</span>, runInChildThread, (__bridge <span class="keyword">void</span> *)(@<span class="string">"anChildThread"</span>));</div></pre></td></tr></table></figure></p>
+<h1 id="NSThread"><a href="#NSThread" class="headerlink" title="NSThread"></a>NSThread</h1><h5 id="直接创建一个子线程-（alloc-init）"><a href="#直接创建一个子线程-（alloc-init）" class="headerlink" title="直接创建一个子线程 （alloc init）"></a>直接创建一个子线程 （alloc init）</h5><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">convenience</span> <span class="keyword">init</span>(target target: <span class="type">AnyObject</span>, selector selector: <span class="type">Selector</span>, object argument: <span class="type">AnyObject</span>?)</div></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">instancetype</span>)initWithTarget:(<span class="keyword">id</span>)target selector:(SEL)selector object:(<span class="keyword">id</span>)argument</div><div class="line"></div><div class="line"><span class="comment">/*</div><div class="line"> &lt;#(nonnull id)#&gt; : 目标对象</div><div class="line"> &lt;#(nonnull SEL)#&gt; : @selector()，需要调用的方法</div><div class="line"> &lt;#(nullable id)#&gt; : 前面方法要接收的参数（对象）</div><div class="line"> */</span></div><div class="line"> - (<span class="keyword">instancetype</span>)initWithTarget:(<span class="keyword">id</span>)target selector:(SEL)selector object:(<span class="keyword">id</span>)argument</div><div class="line"> <span class="built_in">NSThread</span> *thread = [[<span class="built_in">NSThread</span> alloc] initWithTarget:&lt;<span class="meta">#(nonnull id)#&gt; selector:<span class="meta-string">&lt;#(nonnull SEL)#&gt;</span> object:<span class="meta-string">&lt;#(nullable id)#&gt;</span>];</span></div><div class="line"> thread.name = <span class="string">@"some name"</span>; <span class="comment">// operational</span></div><div class="line"> thread.threadPriority = <span class="number">1.0</span> <span class="comment">// operational 1.0 为最高优先级</span></div><div class="line"> <span class="comment">// #warning: thread 在执行完成后将会死亡</span></div><div class="line"> <span class="comment">// 即使有 strong 指向导致没有被释放，也不能再次 + (void)start;</span></div><div class="line"> <span class="comment">// 否则会 carsh</span></div><div class="line"> [thread start]; </div><div class="line"> <span class="comment">// 休眠（阻塞）线程，直到 aDate 再继续执行</span></div><div class="line"> + (<span class="keyword">void</span>)sleepUntilDate:(<span class="built_in">NSDate</span> *)aDate</div><div class="line"> <span class="comment">// 休眠（阻塞）线程，直到 ti 秒之后再继续执行</span></div><div class="line"> + (<span class="keyword">void</span>)sleepForTimeInterval:(<span class="built_in">NSTimeInterval</span>)ti</div><div class="line"> <span class="comment">// 退出线程</span></div><div class="line"> + (<span class="keyword">void</span>)exit</div></pre></td></tr></table></figure>
+<h5 id="分离出一条子线程"><a href="#分离出一条子线程" class="headerlink" title="分离出一条子线程"></a>分离出一条子线程</h5> <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">func</span> <span class="title">detachNewThreadSelector</span>(_ <span class="title">selector</span>: <span class="title">Selector</span>, <span class="title">toTarget</span> <span class="title">target</span>: <span class="title">AnyObject</span>, <span class="title">withObject</span> <span class="title">argument</span>: <span class="title">AnyObject</span>?)</span></div></pre></td></tr></table></figure>
+ <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+ (<span class="keyword">void</span>)detachNewThreadSelector:(SEL)aSelector toTarget:(<span class="keyword">id</span>)aTarget withObject:(<span class="keyword">id</span>)anArgument</div><div class="line"></div><div class="line"><span class="comment">/*</div><div class="line">* &lt;#(nonnull SEL)#&gt; : 要执行的方法</div><div class="line">* &lt;#(nonnull id)#&gt; : 执行方法目标对象</div><div class="line">* &lt;#(nullable id)#&gt; : 要传入的参数</div><div class="line">*/</span></div><div class="line">[<span class="built_in">NSThread</span> detachNewThreadSelector:&lt;<span class="meta">#(nonnull SEL)#&gt; toTarget:<span class="meta-string">&lt;#(nonnull id)#&gt;</span> withObject:<span class="meta-string">&lt;#(nullable id)#&gt;</span>];</span></div></pre></td></tr></table></figure>
+<h5 id="创建一条后台线程"><a href="#创建一条后台线程" class="headerlink" title="创建一条后台线程"></a>创建一条后台线程</h5> <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">performSelectorInBackground</span><span class="params">(<span class="number">_</span> aSelector: Selector, withObject arg: AnyObject?)</span></span></div></pre></td></tr></table></figure>
         
           <p class="article-more-link">
             <a href="/2016/01/multiphreading-pthread-nsthread-gcd-nsoperation/#more">阅读全文</a>
@@ -154,7 +484,7 @@ ga('send', 'pageview');
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.tuccuay.com/2016/01/multiphreading-pthread-nsthread-gcd-nsoperation/" data-id="cijfdl6mv00008oi073dz2dmx" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.tuccuay.com/2016/01/multiphreading-pthread-nsthread-gcd-nsoperation/" data-id="cix5idgkj000lgkbeugvif9yb" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -201,7 +531,7 @@ ga('send', 'pageview');
 <li>首先将会启动 <code>main.m</code>；</li>
 <li>在其中创建 <code>UIApplication</code> 对象；</li>
 <li><p>并为其设置代理。</p>
- <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import &lt;UIKit/UIKit.h&gt;</span></span><br><span class="line"><span class="preprocessor">#import <span class="string">"AppDelegate.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">	@autoreleasepool &#123;</span><br><span class="line">		<span class="keyword">return</span> UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate <span class="keyword">class</span>]));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">&lt;UIKit/UIKit.h&gt;</span></span></div><div class="line"><span class="meta">#import <span class="meta-string">"AppDelegate.h"</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[])</span> </span>&#123;</div><div class="line">	@autoreleasepool &#123;</div><div class="line">		<span class="keyword">return</span> UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate <span class="keyword">class</span>]));</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p> 在 <code>argc, argv, nil, NSStringFromClass([AppDelegate class])</code> 中：</p>
 <ul>
 <li><code>nil</code> 为 <code>UIApplication</code> 类或其子类的名称，当传入 <code>nil</code> 时视为传入 <code>@&quot;UIApplication&quot;</code>；</li>
@@ -221,7 +551,7 @@ ga('send', 'pageview');
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.tuccuay.com/2015/12/Launch-a-iOS-app/" data-id="ciiblypdg002us5i0vicm5nbn" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.tuccuay.com/2015/12/Launch-a-iOS-app/" data-id="cix5idgjv0007gkbeobkf7jr7" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -229,7 +559,7 @@ ga('send', 'pageview');
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/objective-c/">Objective-C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios-development/">iOS-Development</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/objective-c/">Objective-C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios-development/">iOS-Development</a></li></ul>
 
     </footer>
   </div>
@@ -264,8 +594,8 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Dot_syntax_/_点语法">Dot syntax / 点语法</h2><h4 id="快速使用_setter_/_getter_赋值/获取值">快速使用 setter / getter 赋值/获取值</h4><p>一般情况:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">getter:    [anObject setKey:Value];    <span class="comment">// 给 anObject 发送消息 setKey: ，传入 Value</span></span><br><span class="line"><span class="comment">// 即使用 anObject 的类方法 - (returnValueType)getKey;</span></span><br><span class="line">setter:    [anObject key];    <span class="comment">// 给 anObject 发送消息 key</span></span><br><span class="line"><span class="comment">// 即使用 anObject 的类方法 -(void)key:(keyValueType)key;</span></span><br></pre></td></tr></table></figure><br>使用点语法：<code>anObject.key</code><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setter:    key<span class="variable">.value</span> = aNumber;</span><br><span class="line">getter:    something = key;</span><br></pre></td></tr></table></figure></p>
-<h2 id="Object_Literals">Object Literals</h2><h3 id="快速赋值替代初始化赋值、构造方法_/_工厂方法_/_Factory_method_pattern">快速赋值替代初始化赋值、构造方法 / 工厂方法 / Factory method pattern</h3><p>NSString / NSMutableString<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+ (instancetype)string;    <span class="comment">// 生成空的字符串</span></span><br><span class="line"><span class="built_in">NSString</span> *string = [<span class="built_in">NSString</span> string];</span><br><span class="line">+ (instancetype)stringWithString;    <span class="comment">// 工厂方法生成字符串</span></span><br><span class="line"><span class="built_in">NSString</span> *strWithStr = [<span class="built_in">NSString</span> stringWithString:<span class="string">@"There is a string"</span>];</span><br><span class="line">+ (instancetype)initWithString:(<span class="built_in">NSString</span> *)aString;    <span class="comment">// 构造方法初始化字符串</span></span><br><span class="line"><span class="built_in">NSString</span> *intWithStr = [[<span class="built_in">NSString</span> alloc] initWithString:<span class="string">@"Init with string"</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">NSString</span> *sugarString = <span class="string">@"Is Awesome!"</span>;    <span class="comment">// 语法糖！</span></span><br></pre></td></tr></table></figure><br>
+        <h2 id="Dot-syntax-点语法"><a href="#Dot-syntax-点语法" class="headerlink" title="Dot syntax / 点语法"></a>Dot syntax / 点语法</h2><h4 id="快速使用-setter-getter-赋值-获取值"><a href="#快速使用-setter-getter-赋值-获取值" class="headerlink" title="快速使用 setter / getter 赋值/获取值"></a>快速使用 setter / getter 赋值/获取值</h4><p>一般情况:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">getter</span>:    [anObject setKey:Value];    <span class="comment">// 给 anObject 发送消息 setKey: ，传入 Value</span></div><div class="line"><span class="comment">// 即使用 anObject 的类方法 - (returnValueType)getKey;</span></div><div class="line"><span class="keyword">setter</span>:    [anObject key];    <span class="comment">// 给 anObject 发送消息 key</span></div><div class="line"><span class="comment">// 即使用 anObject 的类方法 -(void)key:(keyValueType)key;</span></div></pre></td></tr></table></figure><br>使用点语法：<code>anObject.key</code><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">setter</span>:    key.value = aNumber;</div><div class="line"><span class="keyword">getter</span>:    something = key;</div></pre></td></tr></table></figure></p>
+<h2 id="Object-Literals"><a href="#Object-Literals" class="headerlink" title="Object Literals"></a>Object Literals</h2><h3 id="快速赋值替代初始化赋值、构造方法-工厂方法-Factory-method-pattern"><a href="#快速赋值替代初始化赋值、构造方法-工厂方法-Factory-method-pattern" class="headerlink" title="快速赋值替代初始化赋值、构造方法 / 工厂方法 / Factory method pattern"></a>快速赋值替代初始化赋值、构造方法 / 工厂方法 / Factory method pattern</h3><p>NSString / NSMutableString<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+ (<span class="keyword">instancetype</span>)string;    <span class="comment">// 生成空的字符串</span></div><div class="line"><span class="built_in">NSString</span> *string = [<span class="built_in">NSString</span> string];</div><div class="line">+ (<span class="keyword">instancetype</span>)stringWithString;    <span class="comment">// 工厂方法生成字符串</span></div><div class="line"><span class="built_in">NSString</span> *strWithStr = [<span class="built_in">NSString</span> stringWithString:<span class="string">@"There is a string"</span>];</div><div class="line">+ (<span class="keyword">instancetype</span>)initWithString:(<span class="built_in">NSString</span> *)aString;    <span class="comment">// 构造方法初始化字符串</span></div><div class="line"><span class="built_in">NSString</span> *intWithStr = [[<span class="built_in">NSString</span> alloc] initWithString:<span class="string">@"Init with string"</span>];</div><div class="line"></div><div class="line"><span class="built_in">NSString</span> *sugarString = <span class="string">@"Is Awesome!"</span>;    <span class="comment">// 语法糖！</span></div></pre></td></tr></table></figure><br>
         
           <p class="article-more-link">
             <a href="/2015/11/objective-c-syntactic-sugar/#more">阅读全文</a>
@@ -276,7 +606,7 @@ ga('send', 'pageview');
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.tuccuay.com/2015/11/objective-c-syntactic-sugar/" data-id="ciiblypd80029s5i0tz9hxk2e" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.tuccuay.com/2015/11/objective-c-syntactic-sugar/" data-id="cix5idgkg000igkbeudarusoq" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -319,7 +649,7 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FATA[<span class="number">0000</span>] Post http:///var/run/docker.sock/v1.<span class="number">17</span>/containers/create: dial unix /var/run/docker.sock: no such file or directory. Are you trying to connect to a TLS-enabled daemon without TLS</span><br></pre></td></tr></table></figure>
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">FATA[0000] Post http:///var/run/docker.sock/v1.17/containers/create: dial unix /var/run/docker.sock: no such file or directory. Are you trying to connect to a TLS-enabled daemon without TLS</div></pre></td></tr></table></figure>
 <p><img src="http://www.tuccuay.com/post-pic/2015/03/Are-you-trying-to-connect-to-a-TLS-enabled-daemon-without-TLS.jpg" alt="Are you trying to connect to a TLS-enabled daemon without TLS"><br>从 Vagrant 的深坑掉入了 Docker 的深坑，OS X 使用 Boot2Docker 来使用 Docker，直接从官网下载后安装出现了上面的错误，但是Google之发现几乎没有人遇上过…<br>
         
           <p class="article-more-link">
@@ -331,7 +661,7 @@ ga('send', 'pageview');
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.tuccuay.com/2015/03/Are-you-trying-to-connect-to-a-TLS-enabled-daemon-without-TLS/" data-id="ciiblypdk002xs5i0ub0ze254" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.tuccuay.com/2015/03/Are-you-trying-to-connect-to-a-TLS-enabled-daemon-without-TLS/" data-id="cix5idgjq0005gkbelbknej1f" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -375,9 +705,9 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="//www.tuccuay.com/post-pic/2012/12/post763-Ubuntu12.10启用大黄蜂⁄Bumblebee3.0来提供NVIDIA双显卡切换⁄Optimus支持.png" alt="Ubuntu12.10启用大黄蜂⁄Bumblebee3.0来提供NVIDIA双显卡切换⁄Optimus支持"></p>
-<h1 id="大黄蜂项目/Bumblebee_Project：">大黄蜂项目/Bumblebee Project：</h1><p><a href="http://bumblebee-project.org/" title="Bumblebee">Bumblebee</a> aims to provide support for NVIDIA Optimus laptops for GNU/Linux distributions. Using Bumblebee, you can use your NVIDIA card for rendering graphics which will be displayed using the Intel card.</p>
+<h1 id="大黄蜂项目-Bumblebee-Project："><a href="#大黄蜂项目-Bumblebee-Project：" class="headerlink" title="大黄蜂项目/Bumblebee Project："></a>大黄蜂项目/Bumblebee Project：</h1><p><a href="http://bumblebee-project.org/" title="Bumblebee">Bumblebee</a> aims to provide support for NVIDIA Optimus laptops for GNU/Linux distributions. Using Bumblebee, you can use your NVIDIA card for rendering graphics which will be displayed using the Intel card.</p>
 <p>大黄蜂能为GNU/Linux提供英伟达双显卡切换支持，使用大黄蜂，你能在英特尔核心显卡的基础上启用英伟达显卡。</p>
-<h2 id="安装/Installation：">安装/Installation：</h2>
+<h2 id="安装-Installation："><a href="#安装-Installation：" class="headerlink" title="安装/Installation："></a>安装/Installation：</h2>
         
           <p class="article-more-link">
             <a href="/2012/12/ubuntu12-10启用大黄蜂bumblebee3-0来提供nvidia双显卡切换optimus支持/#more">阅读全文</a>
@@ -388,7 +718,7 @@ ga('send', 'pageview');
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.tuccuay.com/2012/12/ubuntu12-10启用大黄蜂bumblebee3-0来提供nvidia双显卡切换optimus支持/" data-id="ciiblypd20021s5i01ydc2b15" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.tuccuay.com/2012/12/ubuntu12-10启用大黄蜂bumblebee3-0来提供nvidia双显卡切换optimus支持/" data-id="cix5idgl0000xgkbecd96gl5u" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -403,305 +733,9 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-修改ubuntu12-10启动顺序让他默认启动windows8" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2012/12/修改ubuntu12-10启动顺序让他默认启动windows8/" class="article-date">
-  <time datetime="2012-12-18T02:37:44.000Z" itemprop="datePublished">2012-12-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/operating-system/">Operating-System(操作系统)</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/12/修改ubuntu12-10启动顺序让他默认启动windows8/">修改Ubuntu12.10启动顺序让他默认启动Windows8</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在已经有Windows8的情况下，装了个Ubuntu12.10，用了几天又想用回Windows8，但是无奈默认启动项是Ubuntu12.10，导致很容易不注意就进去了。。。</p>
-<p>那么，就把它改过来吧。。。</p>
-<p>Ubuntu12.10的启动引导方式和以前的版本还是没有太大的区别的，因为。。。如图：</p>
-<p><img src="//www.tuccuay.com/post-pic/2012/12/post747-%E4%BF%AE%E6%94%B9Ubuntu12.10%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F%E8%AE%A9%E4%BB%96%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8Windows8.png" alt="修改Ubuntu12.10启动顺序让他默认启动Windows8"><br>我在启动项选择界面顶部看见了“GNU UBUNTU GRUB  2.00-7ununtu11 版”这样的字眼。。。</p>
-<p>既然是GRUB那好办，直接：</p>
-<p><pre class="lang:default decode:true">sudo gedit /boot/grub/grub.cfg</pre><br>不过打开之后我看见的是这么几行：
-        
-          <p class="article-more-link">
-            <a href="/2012/12/修改ubuntu12-10启动顺序让他默认启动windows8/#more">阅读全文</a>
-          </p>
-        
-      
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://www.tuccuay.com/2012/12/修改ubuntu12-10启动顺序让他默认启动windows8/" data-id="ciiblypcv001ls5i0csqhoucp" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://www.tuccuay.com/2012/12/修改ubuntu12-10启动顺序让他默认启动windows8/#disqus_thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">Windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows-8/">Windows8</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/boot-options/">boot-options(引导启动)</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2012/「建议以非root帐号安装支付宝安全控件」" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2012/12/2012/「建议以非root帐号安装支付宝安全控件」/" class="article-date">
-  <time datetime="2012-12-16T06:05:21.000Z" itemprop="datePublished">2012-12-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/permission/">Permission(权限控制)</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/12/2012/「建议以非root帐号安装支付宝安全控件」/">「建议以非root帐号安装支付宝安全控件」在Ubuntu下卸载后重装</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在Ubuntu下要用支付宝，于是提示</p>
-<blockquote>
-<p>安全控件提示</p>
-<p>关闭</p>
-<p>控件在 Linux 上暂仅支持以下浏览器：Firefox, Chrome, Opera</p>
-<p>控件安装完成后，请重启浏览器</p>
-<p>立即安装<br>下载下来之后是个tar，解压到一个aliedit.sh(名字倒是和Windows下用的aliedit.exe一样。。。)<br>然后直接sudo sh aliedit.sh</p>
-<p><pre class="lang:default decode:true">tuccuay@ubuntu:~$ cd 桌面<br>tuccuay@ubuntu:~/桌面$ sudo sh aliedit.sh<br>[sudo] password for tuccuay:<br>建议以非root账号安装支付宝安全控件<br>请重启   firefox   使插件生效<br>成功安装 支付宝安全控件<br>请按任意键退出…<br>tuccuay@ubuntu:~/桌面$</pre><br>然后就傻眼了。。。居然推荐用普通用户权限安装。。。平时都习惯了安装软件用超级用户权限，于是sudo，支付宝既然要普通权限也不给个提示什么的。。。</p>
-</blockquote>
-<p>那就。。。用普通权限再安装一次吧。。。</p>
-<p><pre class="lang:default decode:true">tuccuay@ubuntu:~/桌面$ sh aliedit.sh<br>mkdir: 无法创建目录”/home/tuccuay/.aliedit/install”: 权限不够<br>创建临时目录失败，请手动创建<br>请按任意键退出…<br>aliedit.sh: 43: read: Illegal option -n<br>tuccuay@ubuntu:~/桌面$</pre><br>怎么办。。。打开aliedit.sh看看它都干了些什么吧：
-        
-          <p class="article-more-link">
-            <a href="/2012/12/2012/「建议以非root帐号安装支付宝安全控件」/#more">阅读全文</a>
-          </p>
-        
-      
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://www.tuccuay.com/2012/12/2012/「建议以非root帐号安装支付宝安全控件」/" data-id="ciiblypds003is5i08xlyf5u3" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://www.tuccuay.com/2012/12/2012/「建议以非root帐号安装支付宝安全控件」/#disqus_thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/alipay/">Alipay(支付宝)</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">Ubuntu</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-解决startos软件中心的「依赖不满足，缺少软件包xxx」" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2012/12/解决startos软件中心的「依赖不满足，缺少软件包xxx」/" class="article-date">
-  <time datetime="2012-12-12T14:55:25.000Z" itemprop="datePublished">2012-12-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/operating-system/">Operating-System(操作系统)</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/12/解决startos软件中心的「依赖不满足，缺少软件包xxx」/">解决StartOS软件中心的「依赖不满足，缺少软件包xxx」问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>尝试了一下StartOS，结果在软件中心的各种软件都不能安装，包括Filezilla，QQ，Aliwangwang等。。。</p>
-<p>显示「依赖不满足，缺少软件包」，顿时想起了Ubuntu下的软件包依赖，于是尝试使用</p>
-<p><pre class="lang:default decode:true">sudo apt-get -f install</pre><br>然后发现。。。。not found command，因为StartOS不是用的apt-get。。。是yget。</p>
-<p>那么，怎么办呢？</p>
-<p><img src="//www.tuccuay.com/post-pic/2012/12/post694-解决StartOS软件中心的「依赖不满足，缺少软件包xxx」问题.png" alt="解决StartOS软件中心的「依赖不满足，缺少软件包xxx」问题">既然是因为自带的软件中心不能自动解决依赖问题（即不会自动安装所需的软件包），那么从终端下直接安装吧～<br>
-        
-          <p class="article-more-link">
-            <a href="/2012/12/解决startos软件中心的「依赖不满足，缺少软件包xxx」/#more">阅读全文</a>
-          </p>
-        
-      
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://www.tuccuay.com/2012/12/解决startos软件中心的「依赖不满足，缺少软件包xxx」/" data-id="ciiblypcf000ls5i0vh7sf76f" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://www.tuccuay.com/2012/12/解决startos软件中心的「依赖不满足，缺少软件包xxx」/#disqus_thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/package-management/">PackageManagement(包管理)</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-tumblr出现your-account-has-been-suspended的解决办法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2012/11/tumblr出现your-account-has-been-suspended的解决办法/" class="article-date">
-  <time datetime="2012-11-08T02:01:51.000Z" itemprop="datePublished">2012-11-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/social-networking-services/">SocialNetworkingServices(SNS-社交网络)</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/11/tumblr出现your-account-has-been-suspended的解决办法/">tumblr出现Your account has been suspended的解决办法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>刚刚用手机注册了个Tumblr，注册完登录就显示</p>
-<blockquote>
-<p>Your account has been suspended.</p>
-<p>To find out why, please contact support.<br>折腾了各种方法，无解。<br>然后点了那个contact support，发了一封邮件解决问题。。。不到十分钟。<br>Hi,</p>
-<p>Something wrong with my tumblr account,please help me</p>
-<p>my blog<a href="http://tuccuay.tumblr.com">http://tuccuay.tumblr.com</a></p>
-<p>I want to know why.</p>
-<p>thank you<br>中考英语6分的蹩脚英文啊。。。。<br>然后收到自动回复：
-        
-          <p class="article-more-link">
-            <a href="/2012/11/tumblr出现your-account-has-been-suspended的解决办法/#more">阅读全文</a>
-          </p>
-        
-      
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://www.tuccuay.com/2012/11/tumblr出现your-account-has-been-suspended的解决办法/" data-id="ciiblypd50024s5i01de26du3" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://www.tuccuay.com/2012/11/tumblr出现your-account-has-been-suspended的解决办法/#disqus_thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tumblr/">Tumblr</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-arduino-avrdudestk5000_getsyncnot-in-sycnresp0x3f" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2012/10/arduino-avrdudestk5000_getsyncnot-in-sycnresp0x3f/" class="article-date">
-  <time datetime="2012-10-21T14:11:58.000Z" itemprop="datePublished">2012-10-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/arduino/">Arduino</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/10/arduino-avrdudestk5000_getsyncnot-in-sycnresp0x3f/">[Arduino]avrdude:stk5000_getsync():not in sycn:resp=0x3f串口通信故障</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="//www.tuccuay.com/post-pic/2012/10/post616.jpg" alt="post616" title="post616"><br>今天在刷完Arduino（MANGO OCORBOT兼容板）之后，出现了这样的问题。<br><em>[Arduino]avrdude:stk5000_getsync():not in sycn:resp=0x3f</em><br>在修改LockBit到0F之后变成了<br><strong>[Arduino]avrdude:stk5000_getsync():not in sycn:resp=0x0f</strong></p>
-        
-          <p class="article-more-link">
-            <a href="/2012/10/arduino-avrdudestk5000_getsyncnot-in-sycnresp0x3f/#more">阅读全文</a>
-          </p>
-        
-      
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://www.tuccuay.com/2012/10/arduino-avrdudestk5000_getsyncnot-in-sycnresp0x3f/" data-id="ciiblypdd002os5i0a7v1q1we" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://www.tuccuay.com/2012/10/arduino-avrdudestk5000_getsyncnot-in-sycnresp0x3f/#disqus_thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arduino/">Arduino</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/single-chip-microcomputer/">Single-chip_microcomputer(单片机)</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </section>
@@ -712,7 +746,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">分类/Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/mobile-application-development/">AppDevelopment(应用开发)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/arduino/">Arduino</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/clang/">Clang</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">Docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/great-fire-wall/">GreatFireWall(GFW-中国国家防火墙)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life-style/">LifeStyle(生活)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/operating-system/">Operating-System(操作系统)</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/permission/">Permission(权限控制)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming-language/">Programming-Language(编程语言)</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/programming-language/mobile-application-development/">AppDevelopment(应用开发)</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Single-chip-microcomputer-单片机/">Single-chip_microcomputer(单片机)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/social-networking-services/">SocialNetworkingServices(SNS-社交网络)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ubuntu/">Ubuntu</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web-server/">WebServer</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web-services/">WebServices(网络服务)</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/mobile-application-development/">AppDevelopment(应用开发)</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/arduino/">Arduino</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/black-magic/">BlackMagic(黑魔法)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/clang/">Clang</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">Docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/freat-fire-wall/">GreatFireWall(GFW-中国国家防火墙)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life-style/">LifeStyle(生活)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/operating-system/">Operating-System(操作系统)</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/permission/">Permission(权限控制)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming-language/">Programming-Language(编程语言)</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/programming-language/mobile-application-development/">AppDevelopment(应用开发)</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/project-manager/">Project-Manager(项目管理)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/single-chip-microcomputer/">Single-chip_microcomputer(单片机)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/social-networking-services/">SocialNetworkingServices(SNS-社交网络)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ui-ux/">UI/UX</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ubuntu/">Ubuntu</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/webserver/">WebServer</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web-services/">WebServices(网络服务)</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jisuanke/">jisuanke(计蒜客)</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -721,7 +755,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">标签/Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/alipay/">Alipay(支付宝)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arduino/">Arduino</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/boot2docker/">Boot2Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/">CentOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/discuz/">Discuz!</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/forum/">Forum(论坛)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/great-fire-wall/">GreatFireWall(GFW-中国国家防火墙)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/near-field-communication/">NFC(近场通信)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/os-x/">OS_X</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/os-x-development/">OS_X-Development</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/objective-c/">Objective-C</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hypertext-preprocessor/">PHP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/package-management/">PackageManagement(包管理)</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/radio-frequency-identification/">RFID(无线射频识别)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sys-tem-chip/">STC(宏晶科技)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/single-chip-microcomputer/">Single-chip_microcomputer(单片机)</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/syntactic-sugar/">Syntactic-Sugar(语法糖)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tencent/">Tencent(腾讯)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tumblr/">Tumblr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">Ubuntu</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/virtual-box/">VirtualBox</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">Windows</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows-8/">Windows8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/">WordPress</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xi-an-university-of-technological-information-bxait/">XATU-bxait(西安工业大学北方信息工程学院)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xi-an/">Xi'an(西安)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xi-an-metro/">Xi'anMetro(西安地铁)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/boot-options/">boot-options(引导启动)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-development/">iOS-Development</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tvos-development/">tvOS-Development</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/watchos-development/">watchOS-Development</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/alipay/">Alipay(支付宝)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arduino/">Arduino</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/boot2docker/">Boot2Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/">CentOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/discuz/">Discuz!</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/forum/">Forum(论坛)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/great-fire-wall/">GreatFireWall(GFW-中国国家防火墙)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/icon/">Icon</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learning/">Learning</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/material-design/">Material Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/near-field-communication/">NFC(近场通信)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/os-x/">OS_X</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/os-x-development/">OS_X-Development</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/objective-c/">Objective-C</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hypertext-preprocessor/">PHP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/package-management/">PackageManagement(包管理)</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/radio-frequency-identification/">RFID(无线射频识别)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sys-tem-chip/">STC(宏晶科技)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/single-chip-microcomputer/">Single-chip_microcomputer(单片机)</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/syntactic-sugar/">Syntactic-Sugar(语法糖)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tencent/">Tencent(腾讯)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tumblr/">Tumblr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">Ubuntu</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/virtual-reality/">Virtual-Reality(虚拟现实)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/virtual-box/">VirtualBox</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">Windows</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows-8/">Windows8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/">WordPress</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xi-an-university-of-technological-information-bxait/">XATU-bxait(西安工业大学北方信息工程学院)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xi-an/">Xi'an(西安)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xi-an-metro/">Xi'anMetro(西安地铁)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/boot-options/">boot-options(引导启动)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/">iOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-development/">iOS-Development</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tvos-development/">tvOS-Development</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/watchos-development/">watchOS-Development</a><span class="tag-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -730,7 +764,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">归档/Archive</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">October 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/06/">June 2012</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">January 2012</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/12/">December 2011</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/06/">六月 2012</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">三月 2012</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">二月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">一月 2012</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/12/">十二月 2011</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -742,23 +776,23 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/2016/01/multiphreading-pthread-nsthread-gcd-nsoperation/">多线程：pthread、NSThread、GCD 和 NSOperation</a>
+            <a href="/2016/04/runtime-summary-publish/">RuntimeSummary - 一个集合了常用 Runtime 使用方法的 Playground</a>
           </li>
         
           <li>
-            <a href="/2015/12/Launch-a-iOS-app/">Launch a iOS app / 应用启动原理</a>
+            <a href="/2016/03/cardboard-ios-sdk-getting-started/">在 iOS 上开始创建你的虚拟现实应用</a>
           </li>
         
           <li>
-            <a href="/2015/11/objective-c-syntactic-sugar/">Objective-C/OC Syntactic sugar/语法糖</a>
+            <a href="/2016/03/yyets-icon-material-design/">人人影视 Icon 的 Material Design - 「圣光会制裁你」</a>
           </li>
         
           <li>
-            <a href="/2015/03/Are-you-trying-to-connect-to-a-TLS-enabled-daemon-without-TLS/">FATA[0000]Are you trying to connect to a TLS-enabled daemon without TLS</a>
+            <a href="/2016/02/Pro-Git-2-阅读笔记/">Pro Git 2 阅读笔记</a>
           </li>
         
           <li>
-            <a href="/2012/12/ubuntu12-10启用大黄蜂bumblebee3-0来提供nvidia双显卡切换optimus支持/">Ubuntu12.10启用大黄蜂/Bumblebee3.0来提供NVIDIA双显卡切换/Optimus支持</a>
+            <a href="/2016/02/jisuanke-cs113-python-programming/">计蒜客 CS113 Python 程序设计</a>
           </li>
         
       </ul>
@@ -767,58 +801,63 @@ ga('send', 'pageview');
 
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">友情链接/Links</h3>
-    <div class="widget">
-      <ul>
-        <li><a href="http://fuxiaohei.me/" target="_blank">傅小黑的小玩意儿 <br /><i class="fa fa-link"></i>fuxiaohei.me</a></li><br />
-        <li><a href="http://www.jelivor.com/" target="_blank">Jelivor&#039;s Blog<br /><i class="fa fa-link"></i>www.jelivor.com</a></li><br />
-        <li><a href="http://www.90yang.com/" target="_blank">小羊儿的心情天空<br /><i class="fa fa-link"></i>www.90yang.com</a></li><br />
-        <li><a href="http://www.yangtengfei.com/" target="_blank">小飞的博客<br /><i class="fa fa-link"></i>www.yangtengfei.com</a></li><br />
-        <li><i class="fa fa-arrow-circle-right"></i> Pegasis白化冰布子</li>
-            <a href="http://cysi.me/" target="_blank">Cysime Moflu <i class="fa fa-link"></i>cysi.me</a></li><br />
-            <a href="http://nf.icyif.com/" target="_blank">口袋妖怪新家族群刊 <i class="fa fa-link"></i>nf.icyif.com</a></li><br />
-            <a href="http://blog.cysi.me/" target="_blank">博客 <i class="fa fa-link"></i>blog.cysi.me</a></li><br /><br />
-        <li><a href="http://xn--xwr12q.xn--fiqs8s" target="_blank">崔哲博客<br /><i class="fa fa-link"></i>崔哲.中国</a></li><br />
-        <li><a href="http://www.zning.net.cn/" target="_blank">张宁 <i class="fa fa-arrow-circle-right"></i> 张宁网<br /><i class="fa fa-link"></i>www.zning.net.cn</a></li><br />
-        <li><a href="http://www.cuizhaoyang.cn/" target="_blank">朝闻天下<br /><i class="fa fa-link"></i>www.cuizhaoyang.cn</a></li><br />
-        <li><a href="http://linghein.me/" target="_blank">Alkaliner - Winter is coming<br /><i class="fa fa-link"></i>linghein.me</a></li><br />
-        <li><a href="http://www.duoluosb.com/" target="_blank">堕络&#039;s Blog<br /><i class="fa fa-link"></i>www.duoluosb.com</a></li><br />
-        <li><a href="http://lglp.de/" target="_blank">GFeng Blog<br /><i class="fa fa-link"></i>lglp.de</a></li><br />
-        <li><a href="http://www.kilerd.me/" target="_blank">一阵风。<br /><i class="fa fa-link"></i>www.kilerd.me</a></li><br />
-        <li><a href="http://www.instylecool.com/" target="_blank">小可映像<br /><i class="fa fa-link"></i>www.instylecool.com</a></li><br />
-        <li><a href="http://liayoo.com/" target="_blank">晨风满袖<br /><i class="fa fa-link"></i>liayoo.com</a></li><br />
-        <li><i class="fa fa-arrow-circle-right"></i> Awc Zhang / orancho / Oran</li>
-            <a href="http://nnya.nl/" target="_blank">Awc Zhang <i class="fa fa-link"></i>nnya.nl</a></li><br />
-            <a href="http://nnya.nl/blog" target="_blank">Awc Zhang Blog <i class="fa fa-link"></i>nnya.nl/blog</a></li><br /><br />
-        <li><a href="http://ieasn.com/" target="_blank">夏沐。<br /><i class="fa fa-link"></i>ieasn.com</a></li><br />
-        <li><a href="http://andan.me/" target="_blank">黯淡驿站<br /><i class="fa fa-link"></i>andan.me</a></li><br />
-        <li><a href="https://beetman.net/" target="_blank">BEET&#039;S BLOG<br /><i class="fa fa-link"></i>beetman.net</a></li><br />
-        <li><a href="https://ltecn.com/" target="_blank">阿泉来咧<br /><i class="fa fa-link"></i>ltecn.com</a></li><br />
-        <li><a href="http://twd2.me/" target="_blank">Wandai Blog<br /><i class="fa fa-link"></i>twd2.me</a></li><br />
-    <br />
-        <li><i class="fa fa-arrow-circle-right"></i> Joy Neop</li>
-            <a href="http://joyneop.xyz/" target="_blank">Joy Neop Personal <i class="fa fa-link"></i>joyneop.xyz</a></li><br />
-            <a href="http://joyneop.com/" target="_blank">Joy Neop Bussiness <i class="fa fa-link"></i>joyneop.com</a></li><br />
-            <a href="http://joyneop.xyz/blog/" target="_blank">Joy Neop Blog <i class="fa fa-link"></i>joyneop.xyz/blog</a></li><br />
-    <br />
-        <li>Kwan sang</li>
-        <li><a href="http://kwanr.net/" target="_blank"> Kwan&#039;r Blog <i class="fa fa-link"></i> kwanr.net</a></li><br />
-    <br />
-        <li><i class="fa fa-chevron-down"></i>*...</li><br />
-        <li><a href="http://neverno.me/" target="_blank">雪糕猪&#039;s Blog<br /><i class="fa fa-link"></i>neverno.me</a></li><br />
-        <li><a href="http://20xue.com/" target="_blank">Quicl&#039;s Blog<br /><i class="fa fa-link"></i>20xue.com</a></li><br />
-        <li><a href="http://www.hjwsky.com/" target="_blank">流星DE天空<br /><i class="fa fa-link"></i>www.hjwsky.com</a></li><br />
-        <li><a href="http://www.aojgame.com/" target="_blank">爱撸小杰<br /><i class="fa fa-link"></i>www.aojgame.com</a></li><br />
-        <li><a href="http://www.safe121.com/" target="_blank">网络安全技术博客<br /><i class="fa fa-link"></i>www.safe121.com</a></li><br />
-    <br />
-        <li><i class="fa fa-exclamation-triangle"></i>(或许)再也打不开的一些链接...</li><br />
-        <li><a href="#">峥嵘岁月网<br /><i class="fa fa-chain-broken"></i>chenxiyi.com</a></li><br />
-        <li><a href="#">许三少&#039;s 个人博客<br /><i class="fa fa-chain-broken"></i></i>www.xu3few.com</a></li><br />
-        <li><a href="#">余晨阳<br />www.cysky.info</a></li><br />
-      </ul>
+    <div class="widget-wrap">
+        <h3 class="widget-title">友情链接/Links</h3>
+        <div class="widget">
+            <ul>
+                <li><a href="http://fuxiaohei.me/" target="_blank">傅小黑的小玩意儿 <br/><i class="fa fa-link"></i>fuxiaohei.me</a></li><br/>
+                <li><a href="http://www.jelivor.com/" target="_blank">Jelivor&#039;s Blog<br/><i class="fa fa-link"></i>www.jelivor.com</a></li><br/>
+                <li><a href="http://www.90yang.com/" target="_blank">小羊儿的心情天空<br/><i class="fa fa-link"></i>www.90yang.com</a></li><br/>
+                <li><a href="http://www.yangtengfei.com/" target="_blank">小飞的博客<br/><i class="fa fa-link"></i>www.yangtengfei.com</a></li><br/>
+                <li><i class="fa fa-arrow-circle-right"></i> Pegasis白化冰布子</li>
+                <a href="http://cysi.me/" target="_blank">Cysime Moflu <i class="fa fa-link"></i>cysi.me</a></li><br/>
+                <a href="http://nf.icyif.com/" target="_blank">口袋妖怪新家族群刊 <i class="fa fa-link"></i>nf.icyif.com</a></li><br/>
+                <a href="http://blog.cysi.me/" target="_blank">博客 <i class="fa fa-link"></i>blog.cysi.me</a></li><br/><br/>
+                <li><a href="http://xn--xwr12q.xn--fiqs8s" target="_blank">崔哲博客<br/><i class="fa fa-link"></i>崔哲.中国</a></li><br/>
+                <li><a href="http://www.zning.net.cn/" target="_blank">张宁 <i class="fa fa-arrow-circle-right"></i> 张宁网<br/><i class="fa fa-link"></i>www.zning.net.cn</a></li><br/>
+                <li><a href="http://www.cuizhaoyang.cn/" target="_blank">朝闻天下<br/><i class="fa fa-link"></i>www.cuizhaoyang.cn</a></li><br/>
+                <li><a href="http://linghein.me/" target="_blank">Alkaliner - Winter is coming<br/><i class="fa fa-link"></i>linghein.me</a></li><br/>
+                <li><a href="http://www.duoluosb.com/" target="_blank">堕络&#039;s Blog<br/><i class="fa fa-link"></i>www.duoluosb.com</a></li><br/>
+                <li><a href="http://mjj.sh/" target="_blank">GFeng Blog<br/><i class="fa fa-link"></i>mjj.sh</a></li><br/>
+                <li><a href="http://www.kilerd.me/" target="_blank">一阵风。<br/><i class="fa fa-link"></i>www.kilerd.me</a></li><br/>
+                <li><a href="http://www.instylecool.com/" target="_blank">小可映像<br/><i class="fa fa-link"></i>www.instylecool.com</a></li><br/>
+                <li><a href="http://liayoo.com/" target="_blank">晨风满袖<br/><i class="fa fa-link"></i>liayoo.com</a></li><br/>
+                <li><i class="fa fa-arrow-circle-right"></i> Awc Zhang / orancho / Oran</li>
+                <a href="http://nnya.nl/" target="_blank">Awc Zhang <i class="fa fa-link"></i>nnya.nl</a></li><br/>
+                <a href="http://nnya.nl/blog" target="_blank">Awc Zhang Blog <i class="fa fa-link"></i>nnya.nl/blog</a></li><br/><br/>
+                <li><a href="http://ieasn.com/" target="_blank">夏沐。<br/><i class="fa fa-link"></i>ieasn.com</a></li><br/>
+                <li><a href="http://andan.me/" target="_blank">黯淡驿站<br/><i class="fa fa-link"></i>andan.me</a></li><br/>
+                <li><a href="https://beetman.net/" target="_blank">BEET&#039;S BLOG<br/><i class="fa fa-link"></i>beetman.net</a></li><br/>
+                <li><a href="http://alair.cn/" target="_blank">阿泉来咧<br/><i class="fa fa-link"></i>alair.com</a></li><br/>
+                <li><a href="http://twd2.me/" target="_blank">Wandai Blog<br/><i class="fa fa-link"></i>twd2.me</a></li><br/>
+                <br/>
+                <li><i class="fa fa-arrow-circle-right"></i> Joy Neop</li>
+                <a href="http://joyneop.xyz/" target="_blank">Joy Neop Personal <i class="fa fa-link"></i>joyneop.xyz</a></li><br/>
+                <a href="http://joyneop.com/" target="_blank">Joy Neop Bussiness <i class="fa fa-link"></i>joyneop.com</a></li><br/>
+                <a href="http://joyneop.xyz/blog/" target="_blank">Joy Neop Blog <i class="fa fa-link"></i>joyneop.xyz/blog</a></li><br/>
+                <br/>
+                <li>Kwan sang</li>
+                <li><a href="http://kwanr.net/" target="_blank"> Kwan&#039;r Blog <i class="fa fa-link"></i> kwanr.net</a></li><br/>
+                <li><i class="fa fa-arrow-circle-right"></i> momo k </li>
+                <a href="https://kongwy.com/" target="_blank">Weiyi Kong <i class="fa fa-link"></i>kongwy.com</a></li><br/>
+                <a href="http://momok.xyz/" target="_blank">空空如也，自言自语 <i class="fa fa-link"></i>momok.xyz</a></li><br/><br/>
+                <li><a href="http://fuchen.me/" target="_blank">Fuchen's Blog<br/><i class="fa fa-link"></i>fuchen.me</a></li><br/>
+                <br/>
+                <li><i class="fa fa-chevron-down"></i>*...</li><br/>
+                <li><a href="http://neverno.me/" target="_blank">雪糕猪&#039;s Blog<br/><i class="fa fa-link"></i>neverno.me</a></li><br/>
+                <li><a href="http://20xue.com/" target="_blank">Quicl&#039;s Blog<br/><i class="fa fa-link"></i>20xue.com</a></li><br/>
+                <li><a href="http://www.hjwsky.com/" target="_blank">流星DE天空<br/><i class="fa fa-link"></i>www.hjwsky.com</a></li><br/>
+                <li><a href="http://www.aojgame.com/" target="_blank">爱撸小杰<br/><i class="fa fa-link"></i>www.aojgame.com</a></li><br/>
+                <li><a href="http://www.safe121.com/" target="_blank">网络安全技术博客<br/><i class="fa fa-link"></i>www.safe121.com</a></li><br/>
+                <br/>
+                <li><i class="fa fa-exclamation-triangle"></i>(或许)再也打不开的一些链接...</li><br/>
+                <li><a href="#">峥嵘岁月网<br/><i class="fa fa-chain-broken"></i>chenxiyi.com</a></li><br/>
+                <li><a href="#">许三少&#039;s 个人博客<br/><i class="fa fa-chain-broken"></i></i>www.xu3few.com</a></li><br/>
+                <li><a href="#">余晨阳<br/>www.cysky.info</a></li><br/>
+            </ul>
+        </div>
     </div>
-  </div>
+    
 
   
 </aside>
@@ -894,8 +933,8 @@ ga('send', 'pageview');
 <script type="text/javascript" src="/otherfiles/joyneop-gaypride/gay-pride.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
 
@@ -937,7 +976,7 @@ MathJax.Hub.Queue(function() {
 </script>
 
 
-<script src="/js/script.js" type="text/javascript"></script>
+<script src="/js/script.js"></script>
 
 <script>
 var _hmt = _hmt || [];

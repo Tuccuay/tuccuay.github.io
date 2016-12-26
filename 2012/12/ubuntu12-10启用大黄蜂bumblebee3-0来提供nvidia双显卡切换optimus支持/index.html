@@ -4,28 +4,29 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Ubuntu12.10启用大黄蜂/Bumblebee3.0来提供NVIDIA双显卡切换/Optimus支持 | 洪朔 → Tuccuay&#39;s Blog</title>
+  <title>Ubuntu12.10启用大黄蜂/Bumblebee3.0来提供NVIDIA双显卡切换/Optimus支持 | 洪朔 → Tuccuay</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="大黄蜂项目/Bumblebee Project：Bumblebee aims to provide support for NVIDIA Optimus laptops for GNU/Linux distributions. Using Bumblebee, you can use your NVIDIA card for rendering graphics which will be dis">
+  <meta name="description" content="大黄蜂项目/Bumblebee Project：Bumblebee aims to provide support for NVIDIA Optimus laptops for GNU/Linux distributions. Using Bumblebee, you can use your NVIDIA card for rendering graphics which will be di">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu12.10启用大黄蜂/Bumblebee3.0来提供NVIDIA双显卡切换/Optimus支持">
 <meta property="og:url" content="http://www.tuccuay.com/2012/12/ubuntu12-10启用大黄蜂bumblebee3-0来提供nvidia双显卡切换optimus支持/index.html">
-<meta property="og:site_name" content="Tuccuay's Blog">
-<meta property="og:description" content="大黄蜂项目/Bumblebee Project：Bumblebee aims to provide support for NVIDIA Optimus laptops for GNU/Linux distributions. Using Bumblebee, you can use your NVIDIA card for rendering graphics which will be dis">
+<meta property="og:site_name" content="Tuccuay">
+<meta property="og:description" content="大黄蜂项目/Bumblebee Project：Bumblebee aims to provide support for NVIDIA Optimus laptops for GNU/Linux distributions. Using Bumblebee, you can use your NVIDIA card for rendering graphics which will be di">
 <meta property="og:image" content="http://www.tuccuay.com//www.tuccuay.com/post-pic/2012/12/post763-Ubuntu12.10启用大黄蜂⁄Bumblebee3.0来提供NVIDIA双显卡切换⁄Optimus支持.png">
 <meta property="og:updated_time" content="2015-02-09T09:29:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu12.10启用大黄蜂/Bumblebee3.0来提供NVIDIA双显卡切换/Optimus支持">
-<meta name="twitter:description" content="大黄蜂项目/Bumblebee Project：Bumblebee aims to provide support for NVIDIA Optimus laptops for GNU/Linux distributions. Using Bumblebee, you can use your NVIDIA card for rendering graphics which will be dis">
+<meta name="twitter:description" content="大黄蜂项目/Bumblebee Project：Bumblebee aims to provide support for NVIDIA Optimus laptops for GNU/Linux distributions. Using Bumblebee, you can use your NVIDIA card for rendering graphics which will be di">
+<meta name="twitter:image" content="http://www.tuccuay.com//www.tuccuay.com/post-pic/2012/12/post763-Ubuntu12.10启用大黄蜂⁄Bumblebee3.0来提供NVIDIA双显卡切换⁄Optimus支持.png">
 <meta name="twitter:creator" content="@tuccuay">
 <link rel="publisher" href="116552355715323630000">
   
-    <link rel="alternative" href="/atom.xml" title="Tuccuay&#39;s Blog" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Tuccuay" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
   <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
   
 <!-- Google Analytics -->
@@ -59,11 +60,11 @@ ga('send', 'pageview');
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Tuccuay&#39;s Blog</a>
+        <a href="/" id="logo">Tuccuay</a>
       </h1>
       
         <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">懂的越多，会的越少 / A life soloplayer.</a>
+          <a href="/" id="subtitle">Swift / Python / ♂</a>
         </h2>
       
     </div>
@@ -138,9 +139,9 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="//www.tuccuay.com/post-pic/2012/12/post763-Ubuntu12.10启用大黄蜂⁄Bumblebee3.0来提供NVIDIA双显卡切换⁄Optimus支持.png" alt="Ubuntu12.10启用大黄蜂⁄Bumblebee3.0来提供NVIDIA双显卡切换⁄Optimus支持"></p>
-<h1 id="大黄蜂项目/Bumblebee_Project：">大黄蜂项目/Bumblebee Project：</h1><p><a href="http://bumblebee-project.org/" title="Bumblebee" target="_blank" rel="external">Bumblebee</a> aims to provide support for NVIDIA Optimus laptops for GNU/Linux distributions. Using Bumblebee, you can use your NVIDIA card for rendering graphics which will be displayed using the Intel card.</p>
+<h1 id="大黄蜂项目-Bumblebee-Project："><a href="#大黄蜂项目-Bumblebee-Project：" class="headerlink" title="大黄蜂项目/Bumblebee Project："></a>大黄蜂项目/Bumblebee Project：</h1><p><a href="http://bumblebee-project.org/" title="Bumblebee" target="_blank" rel="external">Bumblebee</a> aims to provide support for NVIDIA Optimus laptops for GNU/Linux distributions. Using Bumblebee, you can use your NVIDIA card for rendering graphics which will be displayed using the Intel card.</p>
 <p>大黄蜂能为GNU/Linux提供英伟达双显卡切换支持，使用大黄蜂，你能在英特尔核心显卡的基础上启用英伟达显卡。</p>
-<h2 id="安装/Installation：">安装/Installation：</h2><a id="more"></a>
+<h2 id="安装-Installation："><a href="#安装-Installation：" class="headerlink" title="安装/Installation："></a>安装/Installation：</h2><a id="more"></a>
 <p>Bumblebee 3.0 is supported up to <a href="http://www.ubuntu.com/" title="Ubuntu" target="_blank" rel="external">Ubuntu</a> version 12.10./大黄蜂3.0现已支持友邦拓12.10（Ubuntu12.10）版本。</p>
 <p>You need to open your terminal and enter the commands below./你需要先打开一个终端来运行一下命令</p>
 <ol>
@@ -155,16 +156,16 @@ ga('send', 'pageview');
 <li><p>Install Bumblebee using the proprietary nvidia driver:/安装大黄蜂（Bumblebee）并使用英伟达（nVidia）驱动：</p>
 <pre class="lang:default decode:true">sudo apt-get install bumblebee bumblebee-nvidia linux-headers-generic</pre>
 </li>
-<li><p>Reboot or re-login/重新启动你的计算机或者注销当前用户并登录：<br>For advanced users, if you do not want to use the proprietary nvidia driver or 32-bit libraries (for example, if you are only interested in power savings), install bumblebee with:/对于高级用户，如果你需要32位运行函数库（例如你需要节约能源消耗），使用如下方式安装大黄蜂：<br><pre class="lang:default decode:true">sudo apt-get install —no-install-recommends bumblebee linux-headers-generic</pre><br>linux-headers-generic is necessary since bbswitch (the power saving module) is a kernel module./linux-headers-generic这个软件包是必须的，因为bbswitch（能源管理模块）是个内核模块。</p>
+<li><p>Reboot or re-login/重新启动你的计算机或者注销当前用户并登录：<br>For advanced users, if you do not want to use the proprietary nvidia driver or 32-bit libraries (for example, if you are only interested in power savings), install bumblebee with:/对于高级用户，如果你需要32位运行函数库（例如你需要节约能源消耗），使用如下方式安装大黄蜂：<br><pre class="lang:default decode:true">sudo apt-get install –no-install-recommends bumblebee linux-headers-generic</pre><br>linux-headers-generic is necessary since bbswitch (the power saving module) is a kernel module./linux-headers-generic这个软件包是必须的，因为bbswitch（能源管理模块）是个内核模块。</p>
 </li>
 </ol>
-<h3 id="升级/Upgrading：">升级/Upgrading：</h3><p>If you already got Bumblebee installed on your system, upgrade to Bumblebee 3.0./如果你以前安装过大黄蜂在你的系统中，升级它到大黄蜂3.0版本。</p>
+<h3 id="升级-Upgrading："><a href="#升级-Upgrading：" class="headerlink" title="升级/Upgrading："></a>升级/Upgrading：</h3><p>If you already got Bumblebee installed on your system, upgrade to Bumblebee 3.0./如果你以前安装过大黄蜂在你的系统中，升级它到大黄蜂3.0版本。</p>
 <p>Please, follow the instructions on this wiki: /请查看这篇维基：<a href="https://github.com/Bumblebee-Project/Bumblebee/wiki/Upgrading-on-Ubuntu" target="_blank" rel="external">https://github.com/Bumblebee-Project/Bumblebee/wiki/Upgrading-on-Ubuntu</a></p>
-<h2 id="如何使用/Usage：">如何使用/Usage：</h2><p>To run your application with the discrete NVIDIA card run in the terminal:/在终端中使用英伟达独立显卡来运行你的应用程序/游戏：</p>
+<h2 id="如何使用-Usage："><a href="#如何使用-Usage：" class="headerlink" title="如何使用/Usage："></a>如何使用/Usage：</h2><p>To run your application with the discrete NVIDIA card run in the terminal:/在终端中使用英伟达独立显卡来运行你的应用程序/游戏：</p>
 <pre class="lang:default decode:true">$ optirun [options] &lt;application&gt; [application-parameters]</pre>
 <pre>$ optirun [选项] <应用程序> [应用程序的参数]</应用程序></pre>
 
-<h4 id="例子/Example:">例子/Example:</h4><pre class="lang:default decode:true">$ optirun firefox</pre>
+<h4 id="例子-Example"><a href="#例子-Example" class="headerlink" title="例子/Example:"></a>例子/Example:</h4><pre class="lang:default decode:true">$ optirun firefox</pre>
 上例为使用英伟达独立显卡运行火狐浏览器
 
 For a list of options for optirun run:/查看所有的选项列表：
@@ -192,11 +193,11 @@ If your issue is not solved, you can join the 如果你的反馈没有得到回�
 If you're asked to create a bugreport, run the next command in a terminal: /如果你需要一份报告来描述问题，执行以下命令：
 <pre class="lang:default decode:true">sudo bumblebee-bugreport</pre>
 
-<h2 id="卸载/Uninstall：">卸载/Uninstall：</h2><p>If you’re unsatisfied with Bumblebee, you can remove it via:/如果你对大黄蜂的表现不满意，你可以卸载他：</p>
+<h2 id="卸载-Uninstall："><a href="#卸载-Uninstall：" class="headerlink" title="卸载/Uninstall："></a>卸载/Uninstall：</h2><p>If you’re unsatisfied with Bumblebee, you can remove it via:/如果你对大黄蜂的表现不满意，你可以卸载他：</p>
 <p><pre class="lang:default decode:true">sudo apt-get install ppa-purge</pre></p>
 <p><pre class="lang:default decode:true">sudo ppa-purge ppa:bumblebee/stable</pre><br>If you want to keep some programs from the bumblebee repository, you can also suffice by removing Bumblebee only (including its dependencies):/如果你需要将所有大黄蜂的依赖包一并删除：</p>
 <p><pre class="lang:default decode:true">sudo apt-get purge bumblebee</pre></p>
-<p><pre class="lang:default decode:true">sudo apt-get —purge autoremove</pre><br>本文由 <a href="http://www.tuccuay.com/" title="洪朔">洪朔</a> 翻译自 Ubuntu Wiki，原文地址：<a href="https://wiki.ubuntu.com/Bumblebee" title="Bumblebee in Ubuntu" target="_blank" rel="external">https://wiki.ubuntu.com/Bumblebee</a><br>注：本文适用于「Intel/英特尔核心显卡」和「NVIDIA/英伟达核心显卡」并且正在使用Ubuntu ( 包括 11.04 / 11.10 / 12.04 LTS / 12.10 / 13.04 等主流版本 )计算机使用 Bumblebee/大黄蜂项目 来达到双显卡切换的目的，其对于「ATI显卡」不适用。</p>
+<p><pre class="lang:default decode:true">sudo apt-get –purge autoremove</pre><br>本文由 <a href="http://www.tuccuay.com/" title="洪朔">洪朔</a> 翻译自 Ubuntu Wiki，原文地址：<a href="https://wiki.ubuntu.com/Bumblebee" title="Bumblebee in Ubuntu" target="_blank" rel="external">https://wiki.ubuntu.com/Bumblebee</a><br>注：本文适用于「Intel/英特尔核心显卡」和「NVIDIA/英伟达核心显卡」并且正在使用Ubuntu ( 包括 11.04 / 11.10 / 12.04 LTS / 12.10 / 13.04 等主流版本 )计算机使用 Bumblebee/大黄蜂项目 来达到双显卡切换的目的，其对于「ATI显卡」不适用。</p>
 
       
       
@@ -213,7 +214,7 @@ If you're asked to create a bugreport, run the next command in a terminal: /如�
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.tuccuay.com/2012/12/ubuntu12-10启用大黄蜂bumblebee3-0来提供nvidia双显卡切换optimus支持/" data-id="ciiblypd20021s5i01ydc2b15" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.tuccuay.com/2012/12/ubuntu12-10启用大黄蜂bumblebee3-0来提供nvidia双显卡切换optimus支持/" data-id="cix5idgl0000xgkbecd96gl5u" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -261,7 +262,7 @@ If you're asked to create a bugreport, run the next command in a terminal: /如�
   <div class="widget-wrap">
     <h3 class="widget-title">分类/Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/mobile-application-development/">AppDevelopment(应用开发)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/arduino/">Arduino</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/clang/">Clang</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">Docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/great-fire-wall/">GreatFireWall(GFW-中国国家防火墙)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life-style/">LifeStyle(生活)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/operating-system/">Operating-System(操作系统)</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/permission/">Permission(权限控制)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming-language/">Programming-Language(编程语言)</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/programming-language/mobile-application-development/">AppDevelopment(应用开发)</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Single-chip-microcomputer-单片机/">Single-chip_microcomputer(单片机)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/social-networking-services/">SocialNetworkingServices(SNS-社交网络)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ubuntu/">Ubuntu</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web-server/">WebServer</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web-services/">WebServices(网络服务)</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/mobile-application-development/">AppDevelopment(应用开发)</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/arduino/">Arduino</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/black-magic/">BlackMagic(黑魔法)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/clang/">Clang</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">Docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/freat-fire-wall/">GreatFireWall(GFW-中国国家防火墙)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life-style/">LifeStyle(生活)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/operating-system/">Operating-System(操作系统)</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/permission/">Permission(权限控制)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming-language/">Programming-Language(编程语言)</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/programming-language/mobile-application-development/">AppDevelopment(应用开发)</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/project-manager/">Project-Manager(项目管理)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/single-chip-microcomputer/">Single-chip_microcomputer(单片机)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/social-networking-services/">SocialNetworkingServices(SNS-社交网络)</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ui-ux/">UI/UX</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ubuntu/">Ubuntu</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/webserver/">WebServer</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web-services/">WebServices(网络服务)</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jisuanke/">jisuanke(计蒜客)</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -270,7 +271,7 @@ If you're asked to create a bugreport, run the next command in a terminal: /如�
   <div class="widget-wrap">
     <h3 class="widget-title">标签/Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/alipay/">Alipay(支付宝)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arduino/">Arduino</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/boot2docker/">Boot2Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/">CentOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/discuz/">Discuz!</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/forum/">Forum(论坛)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/great-fire-wall/">GreatFireWall(GFW-中国国家防火墙)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/near-field-communication/">NFC(近场通信)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/os-x/">OS_X</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/os-x-development/">OS_X-Development</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/objective-c/">Objective-C</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hypertext-preprocessor/">PHP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/package-management/">PackageManagement(包管理)</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/radio-frequency-identification/">RFID(无线射频识别)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sys-tem-chip/">STC(宏晶科技)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/single-chip-microcomputer/">Single-chip_microcomputer(单片机)</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/syntactic-sugar/">Syntactic-Sugar(语法糖)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tencent/">Tencent(腾讯)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tumblr/">Tumblr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">Ubuntu</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/virtual-box/">VirtualBox</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">Windows</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows-8/">Windows8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/">WordPress</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xi-an-university-of-technological-information-bxait/">XATU-bxait(西安工业大学北方信息工程学院)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xi-an/">Xi'an(西安)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xi-an-metro/">Xi'anMetro(西安地铁)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/boot-options/">boot-options(引导启动)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-development/">iOS-Development</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tvos-development/">tvOS-Development</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/watchos-development/">watchOS-Development</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/alipay/">Alipay(支付宝)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arduino/">Arduino</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/boot2docker/">Boot2Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/">CentOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/discuz/">Discuz!</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/forum/">Forum(论坛)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/great-fire-wall/">GreatFireWall(GFW-中国国家防火墙)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/icon/">Icon</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learning/">Learning</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/material-design/">Material Design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/near-field-communication/">NFC(近场通信)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/os-x/">OS_X</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/os-x-development/">OS_X-Development</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/objective-c/">Objective-C</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hypertext-preprocessor/">PHP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/package-management/">PackageManagement(包管理)</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/radio-frequency-identification/">RFID(无线射频识别)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sys-tem-chip/">STC(宏晶科技)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/single-chip-microcomputer/">Single-chip_microcomputer(单片机)</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/syntactic-sugar/">Syntactic-Sugar(语法糖)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tencent/">Tencent(腾讯)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tumblr/">Tumblr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">Ubuntu</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/virtual-reality/">Virtual-Reality(虚拟现实)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/virtual-box/">VirtualBox</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">Windows</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows-8/">Windows8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/">WordPress</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xi-an-university-of-technological-information-bxait/">XATU-bxait(西安工业大学北方信息工程学院)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xi-an/">Xi'an(西安)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xi-an-metro/">Xi'anMetro(西安地铁)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/boot-options/">boot-options(引导启动)</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/">iOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios-development/">iOS-Development</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tvos-development/">tvOS-Development</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/watchos-development/">watchOS-Development</a><span class="tag-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -279,7 +280,7 @@ If you're asked to create a bugreport, run the next command in a terminal: /如�
   <div class="widget-wrap">
     <h3 class="widget-title">归档/Archive</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">November 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">October 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/06/">June 2012</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">January 2012</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/12/">December 2011</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/06/">六月 2012</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">三月 2012</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">二月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">一月 2012</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/12/">十二月 2011</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -291,23 +292,23 @@ If you're asked to create a bugreport, run the next command in a terminal: /如�
       <ul>
         
           <li>
-            <a href="/2016/01/multiphreading-pthread-nsthread-gcd-nsoperation/">多线程：pthread、NSThread、GCD 和 NSOperation</a>
+            <a href="/2016/04/runtime-summary-publish/">RuntimeSummary - 一个集合了常用 Runtime 使用方法的 Playground</a>
           </li>
         
           <li>
-            <a href="/2015/12/Launch-a-iOS-app/">Launch a iOS app / 应用启动原理</a>
+            <a href="/2016/03/cardboard-ios-sdk-getting-started/">在 iOS 上开始创建你的虚拟现实应用</a>
           </li>
         
           <li>
-            <a href="/2015/11/objective-c-syntactic-sugar/">Objective-C/OC Syntactic sugar/语法糖</a>
+            <a href="/2016/03/yyets-icon-material-design/">人人影视 Icon 的 Material Design - 「圣光会制裁你」</a>
           </li>
         
           <li>
-            <a href="/2015/03/Are-you-trying-to-connect-to-a-TLS-enabled-daemon-without-TLS/">FATA[0000]Are you trying to connect to a TLS-enabled daemon without TLS</a>
+            <a href="/2016/02/Pro-Git-2-阅读笔记/">Pro Git 2 阅读笔记</a>
           </li>
         
           <li>
-            <a href="/2012/12/ubuntu12-10启用大黄蜂bumblebee3-0来提供nvidia双显卡切换optimus支持/">Ubuntu12.10启用大黄蜂/Bumblebee3.0来提供NVIDIA双显卡切换/Optimus支持</a>
+            <a href="/2016/02/jisuanke-cs113-python-programming/">计蒜客 CS113 Python 程序设计</a>
           </li>
         
       </ul>
@@ -316,58 +317,63 @@ If you're asked to create a bugreport, run the next command in a terminal: /如�
 
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">友情链接/Links</h3>
-    <div class="widget">
-      <ul>
-        <li><a href="http://fuxiaohei.me/" target="_blank">傅小黑的小玩意儿 <br /><i class="fa fa-link"></i>fuxiaohei.me</a></li><br />
-        <li><a href="http://www.jelivor.com/" target="_blank">Jelivor&#039;s Blog<br /><i class="fa fa-link"></i>www.jelivor.com</a></li><br />
-        <li><a href="http://www.90yang.com/" target="_blank">小羊儿的心情天空<br /><i class="fa fa-link"></i>www.90yang.com</a></li><br />
-        <li><a href="http://www.yangtengfei.com/" target="_blank">小飞的博客<br /><i class="fa fa-link"></i>www.yangtengfei.com</a></li><br />
-        <li><i class="fa fa-arrow-circle-right"></i> Pegasis白化冰布子</li>
-            <a href="http://cysi.me/" target="_blank">Cysime Moflu <i class="fa fa-link"></i>cysi.me</a></li><br />
-            <a href="http://nf.icyif.com/" target="_blank">口袋妖怪新家族群刊 <i class="fa fa-link"></i>nf.icyif.com</a></li><br />
-            <a href="http://blog.cysi.me/" target="_blank">博客 <i class="fa fa-link"></i>blog.cysi.me</a></li><br /><br />
-        <li><a href="http://xn--xwr12q.xn--fiqs8s" target="_blank">崔哲博客<br /><i class="fa fa-link"></i>崔哲.中国</a></li><br />
-        <li><a href="http://www.zning.net.cn/" target="_blank">张宁 <i class="fa fa-arrow-circle-right"></i> 张宁网<br /><i class="fa fa-link"></i>www.zning.net.cn</a></li><br />
-        <li><a href="http://www.cuizhaoyang.cn/" target="_blank">朝闻天下<br /><i class="fa fa-link"></i>www.cuizhaoyang.cn</a></li><br />
-        <li><a href="http://linghein.me/" target="_blank">Alkaliner - Winter is coming<br /><i class="fa fa-link"></i>linghein.me</a></li><br />
-        <li><a href="http://www.duoluosb.com/" target="_blank">堕络&#039;s Blog<br /><i class="fa fa-link"></i>www.duoluosb.com</a></li><br />
-        <li><a href="http://lglp.de/" target="_blank">GFeng Blog<br /><i class="fa fa-link"></i>lglp.de</a></li><br />
-        <li><a href="http://www.kilerd.me/" target="_blank">一阵风。<br /><i class="fa fa-link"></i>www.kilerd.me</a></li><br />
-        <li><a href="http://www.instylecool.com/" target="_blank">小可映像<br /><i class="fa fa-link"></i>www.instylecool.com</a></li><br />
-        <li><a href="http://liayoo.com/" target="_blank">晨风满袖<br /><i class="fa fa-link"></i>liayoo.com</a></li><br />
-        <li><i class="fa fa-arrow-circle-right"></i> Awc Zhang / orancho / Oran</li>
-            <a href="http://nnya.nl/" target="_blank">Awc Zhang <i class="fa fa-link"></i>nnya.nl</a></li><br />
-            <a href="http://nnya.nl/blog" target="_blank">Awc Zhang Blog <i class="fa fa-link"></i>nnya.nl/blog</a></li><br /><br />
-        <li><a href="http://ieasn.com/" target="_blank">夏沐。<br /><i class="fa fa-link"></i>ieasn.com</a></li><br />
-        <li><a href="http://andan.me/" target="_blank">黯淡驿站<br /><i class="fa fa-link"></i>andan.me</a></li><br />
-        <li><a href="https://beetman.net/" target="_blank">BEET&#039;S BLOG<br /><i class="fa fa-link"></i>beetman.net</a></li><br />
-        <li><a href="https://ltecn.com/" target="_blank">阿泉来咧<br /><i class="fa fa-link"></i>ltecn.com</a></li><br />
-        <li><a href="http://twd2.me/" target="_blank">Wandai Blog<br /><i class="fa fa-link"></i>twd2.me</a></li><br />
-    <br />
-        <li><i class="fa fa-arrow-circle-right"></i> Joy Neop</li>
-            <a href="http://joyneop.xyz/" target="_blank">Joy Neop Personal <i class="fa fa-link"></i>joyneop.xyz</a></li><br />
-            <a href="http://joyneop.com/" target="_blank">Joy Neop Bussiness <i class="fa fa-link"></i>joyneop.com</a></li><br />
-            <a href="http://joyneop.xyz/blog/" target="_blank">Joy Neop Blog <i class="fa fa-link"></i>joyneop.xyz/blog</a></li><br />
-    <br />
-        <li>Kwan sang</li>
-        <li><a href="http://kwanr.net/" target="_blank"> Kwan&#039;r Blog <i class="fa fa-link"></i> kwanr.net</a></li><br />
-    <br />
-        <li><i class="fa fa-chevron-down"></i>*...</li><br />
-        <li><a href="http://neverno.me/" target="_blank">雪糕猪&#039;s Blog<br /><i class="fa fa-link"></i>neverno.me</a></li><br />
-        <li><a href="http://20xue.com/" target="_blank">Quicl&#039;s Blog<br /><i class="fa fa-link"></i>20xue.com</a></li><br />
-        <li><a href="http://www.hjwsky.com/" target="_blank">流星DE天空<br /><i class="fa fa-link"></i>www.hjwsky.com</a></li><br />
-        <li><a href="http://www.aojgame.com/" target="_blank">爱撸小杰<br /><i class="fa fa-link"></i>www.aojgame.com</a></li><br />
-        <li><a href="http://www.safe121.com/" target="_blank">网络安全技术博客<br /><i class="fa fa-link"></i>www.safe121.com</a></li><br />
-    <br />
-        <li><i class="fa fa-exclamation-triangle"></i>(或许)再也打不开的一些链接...</li><br />
-        <li><a href="#">峥嵘岁月网<br /><i class="fa fa-chain-broken"></i>chenxiyi.com</a></li><br />
-        <li><a href="#">许三少&#039;s 个人博客<br /><i class="fa fa-chain-broken"></i></i>www.xu3few.com</a></li><br />
-        <li><a href="#">余晨阳<br />www.cysky.info</a></li><br />
-      </ul>
+    <div class="widget-wrap">
+        <h3 class="widget-title">友情链接/Links</h3>
+        <div class="widget">
+            <ul>
+                <li><a href="http://fuxiaohei.me/" target="_blank">傅小黑的小玩意儿 <br/><i class="fa fa-link"></i>fuxiaohei.me</a></li><br/>
+                <li><a href="http://www.jelivor.com/" target="_blank">Jelivor&#039;s Blog<br/><i class="fa fa-link"></i>www.jelivor.com</a></li><br/>
+                <li><a href="http://www.90yang.com/" target="_blank">小羊儿的心情天空<br/><i class="fa fa-link"></i>www.90yang.com</a></li><br/>
+                <li><a href="http://www.yangtengfei.com/" target="_blank">小飞的博客<br/><i class="fa fa-link"></i>www.yangtengfei.com</a></li><br/>
+                <li><i class="fa fa-arrow-circle-right"></i> Pegasis白化冰布子</li>
+                <a href="http://cysi.me/" target="_blank">Cysime Moflu <i class="fa fa-link"></i>cysi.me</a></li><br/>
+                <a href="http://nf.icyif.com/" target="_blank">口袋妖怪新家族群刊 <i class="fa fa-link"></i>nf.icyif.com</a></li><br/>
+                <a href="http://blog.cysi.me/" target="_blank">博客 <i class="fa fa-link"></i>blog.cysi.me</a></li><br/><br/>
+                <li><a href="http://xn--xwr12q.xn--fiqs8s" target="_blank">崔哲博客<br/><i class="fa fa-link"></i>崔哲.中国</a></li><br/>
+                <li><a href="http://www.zning.net.cn/" target="_blank">张宁 <i class="fa fa-arrow-circle-right"></i> 张宁网<br/><i class="fa fa-link"></i>www.zning.net.cn</a></li><br/>
+                <li><a href="http://www.cuizhaoyang.cn/" target="_blank">朝闻天下<br/><i class="fa fa-link"></i>www.cuizhaoyang.cn</a></li><br/>
+                <li><a href="http://linghein.me/" target="_blank">Alkaliner - Winter is coming<br/><i class="fa fa-link"></i>linghein.me</a></li><br/>
+                <li><a href="http://www.duoluosb.com/" target="_blank">堕络&#039;s Blog<br/><i class="fa fa-link"></i>www.duoluosb.com</a></li><br/>
+                <li><a href="http://mjj.sh/" target="_blank">GFeng Blog<br/><i class="fa fa-link"></i>mjj.sh</a></li><br/>
+                <li><a href="http://www.kilerd.me/" target="_blank">一阵风。<br/><i class="fa fa-link"></i>www.kilerd.me</a></li><br/>
+                <li><a href="http://www.instylecool.com/" target="_blank">小可映像<br/><i class="fa fa-link"></i>www.instylecool.com</a></li><br/>
+                <li><a href="http://liayoo.com/" target="_blank">晨风满袖<br/><i class="fa fa-link"></i>liayoo.com</a></li><br/>
+                <li><i class="fa fa-arrow-circle-right"></i> Awc Zhang / orancho / Oran</li>
+                <a href="http://nnya.nl/" target="_blank">Awc Zhang <i class="fa fa-link"></i>nnya.nl</a></li><br/>
+                <a href="http://nnya.nl/blog" target="_blank">Awc Zhang Blog <i class="fa fa-link"></i>nnya.nl/blog</a></li><br/><br/>
+                <li><a href="http://ieasn.com/" target="_blank">夏沐。<br/><i class="fa fa-link"></i>ieasn.com</a></li><br/>
+                <li><a href="http://andan.me/" target="_blank">黯淡驿站<br/><i class="fa fa-link"></i>andan.me</a></li><br/>
+                <li><a href="https://beetman.net/" target="_blank">BEET&#039;S BLOG<br/><i class="fa fa-link"></i>beetman.net</a></li><br/>
+                <li><a href="http://alair.cn/" target="_blank">阿泉来咧<br/><i class="fa fa-link"></i>alair.com</a></li><br/>
+                <li><a href="http://twd2.me/" target="_blank">Wandai Blog<br/><i class="fa fa-link"></i>twd2.me</a></li><br/>
+                <br/>
+                <li><i class="fa fa-arrow-circle-right"></i> Joy Neop</li>
+                <a href="http://joyneop.xyz/" target="_blank">Joy Neop Personal <i class="fa fa-link"></i>joyneop.xyz</a></li><br/>
+                <a href="http://joyneop.com/" target="_blank">Joy Neop Bussiness <i class="fa fa-link"></i>joyneop.com</a></li><br/>
+                <a href="http://joyneop.xyz/blog/" target="_blank">Joy Neop Blog <i class="fa fa-link"></i>joyneop.xyz/blog</a></li><br/>
+                <br/>
+                <li>Kwan sang</li>
+                <li><a href="http://kwanr.net/" target="_blank"> Kwan&#039;r Blog <i class="fa fa-link"></i> kwanr.net</a></li><br/>
+                <li><i class="fa fa-arrow-circle-right"></i> momo k </li>
+                <a href="https://kongwy.com/" target="_blank">Weiyi Kong <i class="fa fa-link"></i>kongwy.com</a></li><br/>
+                <a href="http://momok.xyz/" target="_blank">空空如也，自言自语 <i class="fa fa-link"></i>momok.xyz</a></li><br/><br/>
+                <li><a href="http://fuchen.me/" target="_blank">Fuchen's Blog<br/><i class="fa fa-link"></i>fuchen.me</a></li><br/>
+                <br/>
+                <li><i class="fa fa-chevron-down"></i>*...</li><br/>
+                <li><a href="http://neverno.me/" target="_blank">雪糕猪&#039;s Blog<br/><i class="fa fa-link"></i>neverno.me</a></li><br/>
+                <li><a href="http://20xue.com/" target="_blank">Quicl&#039;s Blog<br/><i class="fa fa-link"></i>20xue.com</a></li><br/>
+                <li><a href="http://www.hjwsky.com/" target="_blank">流星DE天空<br/><i class="fa fa-link"></i>www.hjwsky.com</a></li><br/>
+                <li><a href="http://www.aojgame.com/" target="_blank">爱撸小杰<br/><i class="fa fa-link"></i>www.aojgame.com</a></li><br/>
+                <li><a href="http://www.safe121.com/" target="_blank">网络安全技术博客<br/><i class="fa fa-link"></i>www.safe121.com</a></li><br/>
+                <br/>
+                <li><i class="fa fa-exclamation-triangle"></i>(或许)再也打不开的一些链接...</li><br/>
+                <li><a href="#">峥嵘岁月网<br/><i class="fa fa-chain-broken"></i>chenxiyi.com</a></li><br/>
+                <li><a href="#">许三少&#039;s 个人博客<br/><i class="fa fa-chain-broken"></i></i>www.xu3few.com</a></li><br/>
+                <li><a href="#">余晨阳<br/>www.cysky.info</a></li><br/>
+            </ul>
+        </div>
     </div>
-  </div>
+    
 
   
 </aside>
@@ -445,8 +451,8 @@ If you're asked to create a bugreport, run the next command in a terminal: /如�
 <script type="text/javascript" src="/otherfiles/joyneop-gaypride/gay-pride.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
 
@@ -488,7 +494,7 @@ MathJax.Hub.Queue(function() {
 </script>
 
 
-<script src="/js/script.js" type="text/javascript"></script>
+<script src="/js/script.js"></script>
 
 <script>
 var _hmt = _hmt || [];
