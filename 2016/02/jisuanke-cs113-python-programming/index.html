@@ -18,15 +18,15 @@
 这是一个非常简单的题目，意在考察你编程的基础能力。千万别想难了哦。输入为三行，每行一个整数，分别为 A、B、C（数据范围均在 -40 ~ 40 之间）。输出为一行，为“A+B+C”的计算结果。
 
 12345input_list = raw_input().split(&apos; &apos;)sum = 0for input_number in input_list:    sum = sum+i">
-<meta property="og:image" content="http://www.tuccuay.com/post-pic/2016/02/if-write-programming-book-people-write-math-book.jpg">
-<meta property="og:updated_time" content="2016-12-26T02:30:16.000Z">
+<meta property="og:image" content="http://www.tuccuay.com//www.tuccuay.com/post-pic/2016/02/if-write-programming-book-people-write-math-book.jpg">
+<meta property="og:updated_time" content="2017-01-19T16:16:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计蒜客 CS113 Python 程序设计">
 <meta name="twitter:description" content="A+B+C 问题
 这是一个非常简单的题目，意在考察你编程的基础能力。千万别想难了哦。输入为三行，每行一个整数，分别为 A、B、C（数据范围均在 -40 ~ 40 之间）。输出为一行，为“A+B+C”的计算结果。
 
 12345input_list = raw_input().split(&apos; &apos;)sum = 0for input_number in input_list:    sum = sum+i">
-<meta name="twitter:image" content="http://www.tuccuay.com/post-pic/2016/02/if-write-programming-book-people-write-math-book.jpg">
+<meta name="twitter:image" content="http://www.tuccuay.com//www.tuccuay.com/post-pic/2016/02/if-write-programming-book-people-write-math-book.jpg">
 <meta name="twitter:creator" content="@tuccuay">
 <link rel="publisher" href="116552355715323630000">
   
@@ -160,7 +160,7 @@ ga('send', 'pageview');
 <h2 id="交叉排序"><a href="#交叉排序" class="headerlink" title="交叉排序"></a>交叉排序</h2><blockquote>
 <p>输入一行 k 个用空格分隔开的整数，依次为 n1, n2 … nk。请将所有下标不能被 3 但可以被 2 整除的数在这些数字原有的位置上进行升序排列，此外，将余下下标能被 3 整除的数在这些数字原有的位置上进行降序排列。<br>输出包括一行，与输入相对应的若干个整数，为排序后的结果，整数之间用空格分隔。</p>
 </blockquote>
-<p><img src="http://www.tuccuay.com/post-pic/2016/02/if-write-programming-book-people-write-math-book.jpg" alt="如果让写编程书的人来写数学书"></p>
+<p><img src="//www.tuccuay.com/post-pic/2016/02/if-write-programming-book-people-write-math-book.jpg" alt="如果让写编程书的人来写数学书"></p>
 <p>祭出一段抄来的代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">input_str=raw_input()</div><div class="line">input_list=input_str.split()</div><div class="line">up_list=[]</div><div class="line">down_list=[]</div><div class="line">unum,dnum=<span class="number">0</span>,<span class="number">0</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(input_list)):</div><div class="line">    <span class="keyword">if</span> (i+<span class="number">1</span>)%<span class="number">3</span>!=<span class="number">0</span> <span class="keyword">and</span> (i+<span class="number">1</span>)%<span class="number">2</span>==<span class="number">0</span>:</div><div class="line">        up_list.append(int(input_list[i]))</div><div class="line">        input_list[i]=<span class="string">'u'</span>+str(unum)</div><div class="line">        unum+=<span class="number">1</span></div><div class="line">    <span class="keyword">elif</span> (i+<span class="number">1</span>)%<span class="number">3</span>==<span class="number">0</span>:</div><div class="line">        down_list.append(int(input_list[i]))</div><div class="line">        input_list[i]=<span class="string">"d"</span>+str(dnum)</div><div class="line">        dnum+=<span class="number">1</span></div><div class="line">up_list.sort()</div><div class="line">down_list.sort(reverse=<span class="keyword">True</span>)</div><div class="line"><span class="keyword">for</span> i,item <span class="keyword">in</span> zip(range(len(input_list)),input_list):</div><div class="line">    <span class="keyword">if</span> type(item)==str:</div><div class="line">        <span class="keyword">if</span> item[<span class="number">0</span>]==<span class="string">'u'</span>:</div><div class="line">            input_list[i]=str(up_list[int(item[<span class="number">1</span>:])])</div><div class="line">        <span class="keyword">elif</span> item[<span class="number">0</span>]==<span class="string">'d'</span>:</div><div class="line">            input_list[i]=str(down_list[int(item[<span class="number">1</span>:])])</div><div class="line"><span class="keyword">print</span> <span class="string">' '</span>.join(input_list)</div></pre></td></tr></table></figure>
 <p>ref: <a href="http://cqtjwz.com/2015/12/24/Cross-Sort-Python/" target="_blank" rel="external">ref: http://cqtjwz.com/2015/12/24/Cross-Sort-Python/</a></p>
@@ -185,7 +185,7 @@ ga('send', 'pageview');
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.tuccuay.com/2016/02/jisuanke-cs113-python-programming/" data-id="cixpze230000gqebe6t66o5nj" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.tuccuay.com/2016/02/jisuanke-cs113-python-programming/" data-id="ciy4l3u9h000gz3be38xth1ey" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -417,7 +417,7 @@ ga('send', 'pageview');
     <a class="article-share-more" data-cmd="more" title="更多"></a>
   </div>
 </div>
-<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
 
 <!-- 百度分享 end -->
 
@@ -436,9 +436,9 @@ MathJax.Hub.Config({
 tex2jax: {
           inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
                 processEscapes: true
-                    
+
 }
-  
+
         });
 </script>
 
@@ -446,9 +446,9 @@ tex2jax: {
 MathJax.Hub.Config({
 tex2jax: {
             skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-                  
+
 }
-    
+
         });
 </script>
 
@@ -457,13 +457,13 @@ MathJax.Hub.Queue(function() {
             var all = MathJax.Hub.getAllJax(), i;
             for(i=0; i < all.length; i += 1) {
                             all[i].SourceElement().parentNode.className += ' has-jax';
-                                    
+
             }
-                
+
         });
 </script>
 
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 

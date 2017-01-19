@@ -159,7 +159,7 @@ ga('send', 'pageview');
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.tuccuay.com/2016/04/runtime-summary-publish/" data-id="cixpze23c000qqebe5sf6c7sw" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.tuccuay.com/2016/04/runtime-summary-publish/" data-id="ciy4l3u9s000mz3bezswymeps" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -223,7 +223,7 @@ ga('send', 'pageview');
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.tuccuay.com/2016/03/cardboard-ios-sdk-getting-started/" data-id="cixpze22v000dqebefic2kwuz" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.tuccuay.com/2016/03/cardboard-ios-sdk-getting-started/" data-id="ciy4l3u9c000dz3bejcfr9kfs" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -287,7 +287,7 @@ ga('send', 'pageview');
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.tuccuay.com/2016/03/yyets-icon-material-design/" data-id="cixpze23g000vqebe2z2c6k9m" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.tuccuay.com/2016/03/yyets-icon-material-design/" data-id="ciy4l3ua2000vz3be1bd336k5" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -357,7 +357,7 @@ ga('send', 'pageview');
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.tuccuay.com/2016/02/Pro-Git-2-阅读笔记/" data-id="cixpze22s000bqebe42o6xyjf" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.tuccuay.com/2016/02/Pro-Git-2-阅读笔记/" data-id="ciy4l3u99000bz3be8jwv8xiu" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -418,7 +418,7 @@ ga('send', 'pageview');
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.tuccuay.com/2016/02/jisuanke-cs113-python-programming/" data-id="cixpze230000gqebe6t66o5nj" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.tuccuay.com/2016/02/jisuanke-cs113-python-programming/" data-id="ciy4l3u9h000gz3be38xth1ey" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -464,7 +464,7 @@ ga('send', 'pageview');
         <p>在 iOS 开发中，可以通过以下四种方法创建子线程：</p>
 <h1 id="pthread"><a href="#pthread" class="headerlink" title="pthread"></a>pthread</h1><p><code>pthread</code> 是来自 Clang 中的方法，使用前需要手动 <code>#import &lt;pthread.h&gt;</code><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</div><div class="line"> * &lt;#pthread_t *restrict#&gt; : 要在哪一个线程对象中执行（Thread Object 的地址）</div><div class="line"> * &lt;#const pthread_attr_t *restrict#&gt; : 要给Thread Object  的属性</div><div class="line"> * &lt;#void *(*)(void *)#&gt; : 要执行的函数（指向函数的指针）</div><div class="line"> * &lt;#void *restrict#&gt; : 要传入的参数</div><div class="line"> */</span></div><div class="line">pthread_create(&lt;#<span class="keyword">pthread_t</span> *<span class="keyword">restrict</span>#&gt;, &lt;#<span class="keyword">const</span> <span class="keyword">pthread_attr_t</span> *<span class="keyword">restrict</span>#&gt;, &lt;#<span class="keyword">void</span> *(*)(<span class="keyword">void</span> *)#&gt;, &lt;#<span class="keyword">void</span> *<span class="keyword">restrict</span>#&gt;)</div><div class="line"></div><div class="line"><span class="keyword">pthread_t</span> thread;  <span class="comment">// 声明一个线程对象（Thread Object）</span></div><div class="line"><span class="comment">// 在 "thread" 线程对象中执行名为 "runInChildThread" 的函数，线程名为 "anChildThread"</span></div><div class="line">pthread_create(&amp;thread, <span class="literal">NULL</span>, runInChildThread, (__bridge <span class="keyword">void</span> *)(@<span class="string">"anChildThread"</span>));</div></pre></td></tr></table></figure></p>
 <h1 id="NSThread"><a href="#NSThread" class="headerlink" title="NSThread"></a>NSThread</h1><h5 id="直接创建一个子线程-（alloc-init）"><a href="#直接创建一个子线程-（alloc-init）" class="headerlink" title="直接创建一个子线程 （alloc init）"></a>直接创建一个子线程 （alloc init）</h5><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">convenience</span> <span class="keyword">init</span>(target target: <span class="type">AnyObject</span>, selector selector: <span class="type">Selector</span>, object argument: <span class="type">AnyObject</span>?)</div></pre></td></tr></table></figure>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">instancetype</span>)initWithTarget:(<span class="keyword">id</span>)target selector:(SEL)selector object:(<span class="keyword">id</span>)argument</div><div class="line"></div><div class="line"><span class="comment">/*</div><div class="line"> &lt;#(nonnull id)#&gt; : 目标对象</div><div class="line"> &lt;#(nonnull SEL)#&gt; : @selector()，需要调用的方法</div><div class="line"> &lt;#(nullable id)#&gt; : 前面方法要接收的参数（对象）</div><div class="line"> */</span></div><div class="line"> - (<span class="keyword">instancetype</span>)initWithTarget:(<span class="keyword">id</span>)target selector:(SEL)selector object:(<span class="keyword">id</span>)argument</div><div class="line"> <span class="built_in">NSThread</span> *thread = [[<span class="built_in">NSThread</span> alloc] initWithTarget:&lt;<span class="meta">#(nonnull id)#&gt; selector:<span class="meta-string">&lt;#(nonnull SEL)#&gt;</span> object:<span class="meta-string">&lt;#(nullable id)#&gt;</span>];</span></div><div class="line"> thread.name = <span class="string">@"some name"</span>; <span class="comment">// operational</span></div><div class="line"> thread.threadPriority = <span class="number">1.0</span> <span class="comment">// operational 1.0 为最高优先级</span></div><div class="line"> <span class="comment">// #warning: thread 在执行完成后将会死亡</span></div><div class="line"> <span class="comment">// 即使有 strong 指向导致没有被释放，也不能再次 + (void)start;</span></div><div class="line"> <span class="comment">// 否则会 carsh</span></div><div class="line"> [thread start]; </div><div class="line"> <span class="comment">// 休眠（阻塞）线程，直到 aDate 再继续执行</span></div><div class="line"> + (<span class="keyword">void</span>)sleepUntilDate:(<span class="built_in">NSDate</span> *)aDate</div><div class="line"> <span class="comment">// 休眠（阻塞）线程，直到 ti 秒之后再继续执行</span></div><div class="line"> + (<span class="keyword">void</span>)sleepForTimeInterval:(<span class="built_in">NSTimeInterval</span>)ti</div><div class="line"> <span class="comment">// 退出线程</span></div><div class="line"> + (<span class="keyword">void</span>)exit</div></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">instancetype</span>)initWithTarget:(<span class="keyword">id</span>)target selector:(SEL)selector object:(<span class="keyword">id</span>)argument</div><div class="line"></div><div class="line"><span class="comment">/*</div><div class="line"> &lt;#(nonnull id)#&gt; : 目标对象</div><div class="line"> &lt;#(nonnull SEL)#&gt; : @selector()，需要调用的方法</div><div class="line"> &lt;#(nullable id)#&gt; : 前面方法要接收的参数（对象）</div><div class="line"> */</span></div><div class="line"> - (<span class="keyword">instancetype</span>)initWithTarget:(<span class="keyword">id</span>)target selector:(SEL)selector object:(<span class="keyword">id</span>)argument</div><div class="line"> <span class="built_in">NSThread</span> *thread = [[<span class="built_in">NSThread</span> alloc] initWithTarget:&lt;<span class="meta">#(nonnull id)#&gt; selector:<span class="meta-string">&lt;#(nonnull SEL)#&gt;</span> object:<span class="meta-string">&lt;#(nullable id)#&gt;</span>];</span></div><div class="line"> thread.name = <span class="string">@"some name"</span>; <span class="comment">// operational</span></div><div class="line"> thread.threadPriority = <span class="number">1.0</span> <span class="comment">// operational 1.0 为最高优先级</span></div><div class="line"> <span class="comment">// #warning: thread 在执行完成后将会死亡</span></div><div class="line"> <span class="comment">// 即使有 strong 指向导致没有被释放，也不能再次 + (void)start;</span></div><div class="line"> <span class="comment">// 否则会 carsh</span></div><div class="line"> [thread start];</div><div class="line"> <span class="comment">// 休眠（阻塞）线程，直到 aDate 再继续执行</span></div><div class="line"> + (<span class="keyword">void</span>)sleepUntilDate:(<span class="built_in">NSDate</span> *)aDate</div><div class="line"> <span class="comment">// 休眠（阻塞）线程，直到 ti 秒之后再继续执行</span></div><div class="line"> + (<span class="keyword">void</span>)sleepForTimeInterval:(<span class="built_in">NSTimeInterval</span>)ti</div><div class="line"> <span class="comment">// 退出线程</span></div><div class="line"> + (<span class="keyword">void</span>)exit</div></pre></td></tr></table></figure>
 <h5 id="分离出一条子线程"><a href="#分离出一条子线程" class="headerlink" title="分离出一条子线程"></a>分离出一条子线程</h5> <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">func</span> <span class="title">detachNewThreadSelector</span>(_ <span class="title">selector</span>: <span class="title">Selector</span>, <span class="title">toTarget</span> <span class="title">target</span>: <span class="title">AnyObject</span>, <span class="title">withObject</span> <span class="title">argument</span>: <span class="title">AnyObject</span>?)</span></div></pre></td></tr></table></figure>
  <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+ (<span class="keyword">void</span>)detachNewThreadSelector:(SEL)aSelector toTarget:(<span class="keyword">id</span>)aTarget withObject:(<span class="keyword">id</span>)anArgument</div><div class="line"></div><div class="line"><span class="comment">/*</div><div class="line">* &lt;#(nonnull SEL)#&gt; : 要执行的方法</div><div class="line">* &lt;#(nonnull id)#&gt; : 执行方法目标对象</div><div class="line">* &lt;#(nullable id)#&gt; : 要传入的参数</div><div class="line">*/</span></div><div class="line">[<span class="built_in">NSThread</span> detachNewThreadSelector:&lt;<span class="meta">#(nonnull SEL)#&gt; toTarget:<span class="meta-string">&lt;#(nonnull id)#&gt;</span> withObject:<span class="meta-string">&lt;#(nullable id)#&gt;</span>];</span></div></pre></td></tr></table></figure>
 <h5 id="创建一条后台线程"><a href="#创建一条后台线程" class="headerlink" title="创建一条后台线程"></a>创建一条后台线程</h5> <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">performSelectorInBackground</span><span class="params">(<span class="number">_</span> aSelector: Selector, withObject arg: AnyObject?)</span></span></div></pre></td></tr></table></figure>
@@ -478,7 +478,7 @@ ga('send', 'pageview');
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.tuccuay.com/2016/01/multiphreading-pthread-nsthread-gcd-nsoperation/" data-id="cixpze239000mqebeqi6xjdjh" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.tuccuay.com/2016/01/multiphreading-pthread-nsthread-gcd-nsoperation/" data-id="ciy4l3u9n000lz3be0rf4h0wl" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -545,7 +545,7 @@ ga('send', 'pageview');
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.tuccuay.com/2015/12/Launch-a-iOS-app/" data-id="cixpze22b0007qebejibhxuew" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.tuccuay.com/2015/12/Launch-a-iOS-app/" data-id="ciy4l3u8z0007z3be1v93h8bc" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -600,7 +600,7 @@ ga('send', 'pageview');
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.tuccuay.com/2015/11/objective-c-syntactic-sugar/" data-id="cixpze232000iqebev1wuf8l3" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.tuccuay.com/2015/11/objective-c-syntactic-sugar/" data-id="ciy4l3u9k000iz3bed9lfar0u" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -655,7 +655,7 @@ ga('send', 'pageview');
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.tuccuay.com/2015/03/Are-you-trying-to-connect-to-a-TLS-enabled-daemon-without-TLS/" data-id="cixpze2270005qebego214jbq" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.tuccuay.com/2015/03/Are-you-trying-to-connect-to-a-TLS-enabled-daemon-without-TLS/" data-id="ciy4l3u8v0005z3be8bzlby34" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -712,7 +712,7 @@ ga('send', 'pageview');
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://www.tuccuay.com/2012/12/ubuntu12-10启用大黄蜂bumblebee3-0来提供nvidia双显卡切换optimus支持/" data-id="cixpze23e000rqebejua1qwf9" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://www.tuccuay.com/2012/12/ubuntu12-10启用大黄蜂bumblebee3-0来提供nvidia双显卡切换optimus支持/" data-id="ciy4l3u9y000rz3behresj77h" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -920,7 +920,7 @@ ga('send', 'pageview');
     <a class="article-share-more" data-cmd="more" title="更多"></a>
   </div>
 </div>
-<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
 
 <!-- 百度分享 end -->
 
@@ -939,9 +939,9 @@ MathJax.Hub.Config({
 tex2jax: {
           inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
                 processEscapes: true
-                    
+
 }
-  
+
         });
 </script>
 
@@ -949,9 +949,9 @@ tex2jax: {
 MathJax.Hub.Config({
 tex2jax: {
             skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-                  
+
 }
-    
+
         });
 </script>
 
@@ -960,13 +960,13 @@ MathJax.Hub.Queue(function() {
             var all = MathJax.Hub.getAllJax(), i;
             for(i=0; i < all.length; i += 1) {
                             all[i].SourceElement().parentNode.className += ' has-jax';
-                                    
+
             }
-                
+
         });
 </script>
 
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 
