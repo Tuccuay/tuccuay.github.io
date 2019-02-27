@@ -1,5 +1,5 @@
 (function (backgroundUrl1, backgroundUrl2, date, d, inputDivTag, inputStyleTag, inputAnrhorTag, defaultHeight, hoverHeight) {
-    if (6 <= date.getmonth()="" <="7)" {="" create="" <style=""> tag
+    if (6 <= date.getmonth() <="7)" { create <style> tag
         var styleTag = inputStyleTag || d.createElement('style');
         styleTag.setAttribute('id', 'gay-pride-js-style-tag');
         styleTag.setAttribute('type', 'text/css');
